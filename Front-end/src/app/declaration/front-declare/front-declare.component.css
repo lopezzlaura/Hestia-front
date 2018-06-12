@@ -1,0 +1,24 @@
+h1 {
+    font-size: 300%;
+}
+
+#title {
+    text-align: center;
+}
+
+.custom-select {
+    padding: 0;
+}
+
+.example-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.example-radio-button {
+    margin: 5px;
+}
+
+.example-selected-value {
+    margin: 15px 0;
+}

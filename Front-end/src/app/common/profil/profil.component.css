@@ -1,0 +1,56 @@
+
+.block{
+    background-color: white;
+    margin: auto;
+    padding-top: 5vh;
+    color: #222d32;
+    width: 75%;
+    height: 25vh;
+}
+
+p {
+    margin: 0;
+}
+
+.profile_name {
+    width: 100%;
+    font-size: 2vh;
+}
+
+.profile_name .title {
+    font-size: 4vh;
+}
+
+.img_container {
+    padding: 5vh;
+    float: left;
+}
+
+.bottom_line {
+    background-color: #dd4b39;
+    height: 1px;
+    width: 100%;
+}
+
+.change_pw {
+    background-color: white;
+    padding-top: 5vh;
+    color: #222d32;
+    width: 45vh;
+    margin: 5vh auto auto;
+    height: 100%;
+}
+
+.change_city {
+    width: 45vh;
+    margin: 5vh auto auto;
+    color: #222d32;
+    background-color: white;
+}
+
+.currentPassError {
+    padding: 0;
+    margin: 0;
+    color: red;
+    font-size: 1.5vh;
+}

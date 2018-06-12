@@ -1,0 +1,11 @@
+<p>
+    Classement familial
+</p>
+<ul class="collection" *ngFor="let rank of (ranks | async)" (onclick)="test()">
+    <li class="collection-item avatar">
+        <img [src]="'https://www.gravatar.com/avatar/?d=mp'" alt="IMG" class="circle"/>
+        <p>{{rank.memberId}}</p>
+        <p>{{rank.points}}</p>
+    </li>
+</ul>
+

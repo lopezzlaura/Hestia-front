@@ -1,0 +1,110 @@
+{
+  "name": "Issue",
+  "plural": "Issues",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": false,
+      "default": "Dans la maison"
+    },
+    "dateAndTime": {
+      "type": "date",
+      "required": false,
+      "default": "$now"
+    },
+    "date": {
+      "type": "string",
+      "required": false
+    },
+    "time": {
+      "type": "string",
+      "required": false
+    },
+    "commentary": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "type": {
+      "type": "belongsTo",
+      "model": "Type",
+      "foreignKey": "typeId"
+    },
+    "state": {
+      "type": "belongsTo",
+      "model": "State",
+      "foreignKey": "stateId"
+    },
+    "author": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "authorId"
+    },
+    "thirdParties": {
+      "type": "hasMany",
+      "model": "Member",
+      "foreignKey": "issueId",
+      "through": "Assignment"
+    },
+    "emergency": {
+      "type": "belongsTo",
+      "model": "Emergency",
+      "foreignKey": "emergencyId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "delete"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "manager",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "member",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "guest",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

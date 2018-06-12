@@ -1,0 +1,37 @@
+<div class="col l3 m6 s12">
+  <div class="card member">
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Membre</span>
+      <div class="fixed-action-btn halfway-fab-third horizontal">
+        <a class="btn-floating btn-large orange">
+          <i class="large material-icons">more_vert</i>
+        </a>
+        <ul>
+          <li><a class="btn-floating blue darken-1" (click)="opentModifyInhabitantModal()"><i class="material-icons">create</i></a></li>
+          <li><a class="btn-floating red-hestia" (click)="deleteInhabitant()"><i class="material-icons">close</i></a></li>
+        </ul>
+      </div>
+      <div class="row" *ngIf="inhabitantElement.lastname">
+        <p class="col s6 left-align">Nom</p>
+        <p class="col s6 right-align" >{{inhabitantElement.lastname}}</p>
+      </div>
+      <div class="row" *ngIf="inhabitantElement.firstname">
+        <p class="col s6 left-align">Prénom</p>
+        <p class="col s6 right-align" >{{inhabitantElement.firstname}}</p>
+      </div>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+</div>
+
+  <div id="addMember" class="modal homeModal" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalAddMemberActions">
+      <div class="modal-content">
+        <div class="row">
+          <app-inhabitant-modifier (closeEvent)='closeAddMemberModal()' [inhabitant]="inhabitantElement"></app-inhabitant-modifier>
+        </div>
+      </div>
+    </div>
+

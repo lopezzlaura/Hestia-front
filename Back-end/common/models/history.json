@@ -1,0 +1,34 @@
+{
+  "name": "History",
+  "plural": "Histories",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "origin": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "originMember": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "memberId"
+    },
+    "concernedIssue": {
+      "type": "belongsTo",
+      "model": "Issue",
+      "foreignKey": "issueId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

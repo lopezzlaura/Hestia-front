@@ -1,0 +1,94 @@
+<div class="container">
+    <div *ngIf="formLoaded | async" class="row">
+
+    <div class="row" id="title">
+      <h1>Déclarer un incident</h1>
+    </div>
+
+    <form [formGroup]="declareForm" class="col s12">
+
+      <div class="col s6">
+        <div class="row">
+          <div class="col s12 m6">
+            <label>Type d'incident *</label>
+            <select formControlName="typeCB" name="selectedOptionType"
+                    materialize="material_select"
+                    [materializeSelectOptions]="selectOptionsType">
+              <option value="" disabled selected>Choisir le type</option>
+              <option *ngFor="let option of types" [value]="option.id">{{option.name}}</option>
+            </select>
+          </div>
+
+          <div class="col s12 m6">
+            <label>Urgence *</label>
+            <select formControlName="emergencyCB" name="selectedOptionPriority"
+                    materialize="material_select"
+                    [materializeSelectOptions]="selectOptionsPriority">
+              <option value="" disabled selected>Choisir l'urgence</option>
+              <option *ngFor="let emergency of emergencies" [value]="emergency.id">{{emergency.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input formControlName="title" id="incident_title" type="text" class="validate">
+            <label for="incident_title">Titre de l'incident *</label>
+          </div>
+        </div>
+
+          <div class="row">
+              <div class="input-field col s12">
+                  <div class="chips" materialize="material_chip" [materializeParams]="[autocompleteInitChips]" (chip.add)="add($event.detail)" (chip.delete)="delete($event.detail)" (chip.select)="select($event.detail)" [materializeActions]="chipsActions" ></div>
+              </div>
+          </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input formControlName="description" type="text" id="description" class="validate">
+            <label for="description">Description *</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-field col s6">
+        <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header"><i class="fa fa-search-plus"></i>Détails</div>
+            <div class="collapsible-body">
+
+                <div class="row">
+                  <div class="input-field col s12">
+                      <input formControlName="location" id="location" type="text">
+                    <label for="location">Localisation</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input formControlName="date" id="date" class="datepicker" materialize="pickadate" [materializeParams]="dateInit">
+                        <label for="date">Date</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input formControlName="time" id="hour" materialize="pickatime" [materializeParams]="timeInit" type="text" class="timepicker">
+                        <label for="hour">Heure</label>
+                    </div>
+                </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="row col s12 offset-m9">
+        <button class="btn waves-effect waves-light" [disabled]="declareForm.invalid" (click)="onDeclare()"
+                name="action">
+          Déclarer l'incident
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div *ngIf="inhabitantList.length > 0" class="row">
+    <div *ngFor="let inhabitant of inhabitantList">
+          <app-inhabitant [inhabitantElement]="inhabitant"></app-inhabitant>
+    </div>
+</div>
+<div *ngIf="inhabitantList.length == 0" class="row col l12 m12 s12 z-depth-3">
+    <div class="center-align">
+        <i class="large material-icons center">warning</i>
+        <p>Aucune personne liée à ce foyer</p>
+    </div>
+</div>

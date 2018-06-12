@@ -1,0 +1,24 @@
+<div class="weather-wrapper col s3">
+    <div class="weather-card madrid">
+        <div *ngIf="weather == 'Clouds'" class="weather-icon cloudOnly"></div>
+        <div *ngIf="weather == 'Clear'" class="weather-icon sun"></div>
+        <div *ngIf="weather == 'Haze'" class="weather-icon fog"></div>
+        <div *ngIf="weather == 'Rain'" class="weather-icon cloudRain"></div>
+        <div *ngIf="weather == 'Drizzle'" class="weather-icon cloudRain"></div>
+        <div *ngIf="weather == 'Snow'" class="weather-icon snow"></div>
+        <div *ngIf="weather == 'Mist'" class="weather-icon fog"></div>
+        <div *ngIf="weather == 'Fog'" class="weather-icon fog"></div>
+        <div *ngIf="weather == 'Smoke'" class="weather-icon fog"></div>
+        <div *ngIf="weather == 'Sand'" class="weather-icon sand"></div>
+        <div *ngIf="weather == 'Volcanic Ash'" class="weather-icon dust"></div>
+        <div *ngIf="weather == 'Dust'" class="weather-icon dust"></div>
+        <div *ngIf="weather == 'Thunderstorm'" class="weather-icon storm"></div>
+        <div>
+            <h1>{{temperature}}º</h1>
+            <p>{{city}}</p>
+        </div>
+    </div>
+    <div *ngIf="noCity | async" class="no_city">
+        <p style="font-size: 15px;">Entrez la ville de votre choix dans le profil.</p></div>
+
+</div>

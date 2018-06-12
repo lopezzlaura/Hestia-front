@@ -1,0 +1,87 @@
+/* FONT  */
+@font-face {
+  font-family: Adam;
+  src: url("../../../assets/fonts/Adam.otf");
+}
+
+/*NAV BAR*/
+
+.alert {
+  color: red;
+}
+
+.warning {
+  font-size: 18px;
+}
+
+.parallax-container {
+  height: 800px;
+}
+
+.red-hestia {
+  background-color: #AB1323;
+}
+
+.nav-wrapper {
+  background-color: #AB1323;
+  width: 1200px;
+}
+
+.row {
+  margin: 0;
+}
+
+.brand-logo {
+  margin: 7px;
+  width: 150px;
+}
+
+/*MAIN PAGE*/
+
+#indexLogo {
+  width: 9vh;
+}
+
+h1 {
+  font-family: "Adam", sans-serif;
+  font-size: 70px;
+  color: white;
+  margin-top: 5px;
+  font-weight: bold;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+h2 {
+  font-family: "Adam", sans-serif;
+  font-weight: bold;
+  font-size: 58px;
+}
+
+h4 {
+  font-family: "Source Sans Pro ExtraLight", sans-serif;
+  font-size: 26px;
+  color: #AB1323;
+}
+
+li {
+  display: inline;
+  margin: 4vh;
+}
+
+a {
+  color: white;
+  font-family: "Source Sans Pro ExtraLight", sans-serif;
+  font-size: 16px;
+}
+
+.buttons {
+  margin: 0;
+}
+
+@media screen and (min-width: 200px) and (max-width: 1000px) {
+
+  .welcome-text {
+    font-size: 10vw;
+  }
+}

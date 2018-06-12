@@ -1,0 +1,30 @@
+<form class="col s12 ">
+  <div class="row">
+      <div class="input-field col s12">
+          <input placeholder="ex : Dupont" id="last_name" type="text" class="validate" [(ngModel)] = "nameInputValue" [ngModelOptions]="{standalone: true}">
+          <label for="last_name">Nom</label>
+      </div>
+  </div>
+  <div class="row">
+      <div class="input-field col s12">
+          <input placeholder="ex : Jean-Eude" id="first_name" type="text" class="validate" [(ngModel)] = "firstNameInputValue" [ngModelOptions]="{standalone: true}">
+          <label for="first_name">Prénom</label>
+      </div>
+  </div>
+  <div class="row">
+      <div class="input-field col s12">
+          <input placeholder="ex : jeaneude.dupont@mail.com" id="email" type="email" class="validate" [(ngModel)] = "emailInputValue" [ngModelOptions]="{standalone: true}">
+          <label for="email">Adresse mail</label>
+      </div>
+  </div>
+</form>
+
+<div class="row">
+<div class="col s6 left-align">
+    <a class="btn blue" (click)="validDialog()"><i class="material-icons center">check</i></a>
+</div>
+<div class="col s6  right-align">
+    <a class="btn red-hestia" (click)="closeDialog()"><i class="material-icons center">clear</i></a>
+</div>
+
+</div>

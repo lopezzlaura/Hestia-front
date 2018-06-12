@@ -1,0 +1,36 @@
+{
+  "name": "Ranking",
+  "plural": "Rankings",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "points": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {
+    "familyMember": {
+      "type": "hasOne",
+      "model": "Member",
+      "foreignKey": "id",
+      "options": {
+        "nestRemoting": false
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

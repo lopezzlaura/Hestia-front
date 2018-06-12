@@ -1,0 +1,36 @@
+<div class="z-depth-3">
+    <div class="searchbar row">
+        <div class="col offset-m5 offset-s3 m2 s6">
+          <h5>Filtre de recherche</h5>
+        </div>
+      <div id="addMember" class="modal col s12 m6 offset-m3 l4 offset-l4 z-depth-6" materialize="modal" [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+        <div class="modal-content">
+          <div class="row">
+            <app-inhabitant-modifier (closeEvent)='closeModal()'></app-inhabitant-modifier>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+            <form>
+                <div class="input-field col s12 m3 offset-m3">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Name</label>
+                  </div>
+                  <div class="input-field s12 col m3">
+                    <select materialize="material_select" [materializeSelectOptions]="selectOptions">
+                      <option>Admin</option>
+                      <option>Enfant</option>
+                      <option>Gouvernante</option>
+                    </select>
+                    <label>Rôle</label>
+                    </div>
+                    <div class="col s2 offset-s1">
+                        <button type="button" class="btn waves-effect waves-light orange" (click)="addMember()">
+                          Ajouter membre
+                          </button>
+                    </div>
+              </form>
+      </div>
+</div>
+</div>

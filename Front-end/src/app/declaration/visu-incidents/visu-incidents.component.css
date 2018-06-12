@@ -1,0 +1,33 @@
+
+.non_traites {
+    float: left;
+    width: 33.3%;
+    height: 100px;
+}
+
+.en_cours {
+    width: 33.3%;
+    height: 100px;
+}
+
+.resolus {
+    float: right;
+    width: 33.3%;
+    height: 100px;
+}
+
+input[type=radio] {
+    display: inline-block;
+}
+
+.drag-resolve {
+    height: 100px;
+}
+
+.drag-not {
+    height: 100px;
+}
+
+.drag-wip {
+    height: 100px;
+}

@@ -1,0 +1,26 @@
+.mat-dialog-actions {
+    float: right;
+}
+
+
+.responsive-img {
+    width: 17%;
+    height: 17%;
+    float: left;
+}
+
+h2 {
+    font-size: 3vh;
+    margin: 0;
+    padding: 0;
+}
+
+.card-head p {
+    font-size: 2vh;
+    margin: 0;
+    padding: 0;
+}
+
+mat-dialog-content {
+
+}

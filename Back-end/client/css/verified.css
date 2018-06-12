@@ -1,0 +1,39 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #E1E1E1;
+}
+
+h1 {
+    color: #AB1323;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h3 {
+    color: #660B15;
+    font-family: 'Open Sans', sans-serif;
+}
+
+div {
+    text-align: center;
+}
+
+footer {
+    border-top: 1px solid black;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #443d3d;
+    text-align: center;
+}
+
+a:hover {
+    color: #AB1323;
+}
+
+img {
+    border: 1px solid #443d3d;
+    width: 5%;
+    height: 5%;
+    padding: 2%;
+}

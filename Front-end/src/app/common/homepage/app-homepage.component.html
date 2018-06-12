@@ -1,0 +1,272 @@
+<div class="row">
+  <div id="login" class="modal col s12 m6 offset-m3 l4 offset-l4 z-depth-6" materialize="modal"
+       [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions">
+    <div class="modal-content">
+      <div id="login-page" class="row">
+        <div class="col s12 ">
+          <form [formGroup]="loginForm" class="login-form">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">mail_outline</i>
+                <input formControlName="email" id="email" type="email">
+                <label for="email" data-error="wrong" data-success="right">Email</label>
+                <div class="alert col s11 offset-s1" *ngIf="email_log.errors && (email_log.dirty || email_log.touched)">
+                  <span *ngIf="email_log.errors.required">Ce champ est requis</span>
+                  <span *ngIf="email_log.errors.pattern">Veuillez rentrez une adresse email valide</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">lock_outline</i>
+                <input formControlName="password" id="password" type="password">
+                <label for="password">Password</label>
+                <div class="alert col s11 offset-s1"
+                     *ngIf="password_log.errors && (password_log.dirty || password_log.touched)">
+                  <span *ngIf="password_log.errors.required">Ce champ est requis</span>
+                  <span
+                    *ngIf="password_log.errors.minlength">Le mot de passe est trop petit (8 caractères nécessaires)</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <button href="#" (click)="onLogin()" [disabled]="loginForm.invalid"
+                        class="btn waves-effect waves-light col s12">Se connecter
+                </button>
+              </div>
+            </div>
+            <div class="row" *ngIf="errorLog">
+              <div class="alert center-align">
+                <i class="material-icons prefix warning">warning</i>
+                <span>Mauvais mot de passe ou nom d'utilisateur</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6 m6 l6">
+                <p class="margin medium-small"><a href="#" (click)="clickInscriptionFromConnexion()">S'inscrire</a></p>
+              </div>
+              <div class="input-field col s6 m6 l6">
+                <p class="margin right-align medium-small"><a href="#">Mot de passe oublié ?</a></p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="register" class="modal col s12 m6 offset-m3 l4 offset-l4 z-depth-6" materialize="modal"
+       [materializeParams]="[{dismissible: true}]" [materializeActions]="modalActions2">
+    <div class="modal-content">
+      <div id="register-page" class="row">
+        <form [formGroup]="registerForm" class="register-form">
+          <div class="row">
+            <div class="input-field col s12 m6">
+              <i class="material-icons prefix">
+                account_box</i>
+              <input formControlName="firstname" name="firstname" id="firstname" type="text">
+              <label for="firstname">Prénom</label>
+              <div class="alert row" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+                <span class="col s11 offset-s1">Ce champ est requis</span>
+              </div>
+            </div>
+            <div class="input-field col s12 m6">
+              <input class="offset-s1" formControlName="lastname" id="lastname" type="text">
+              <label for="lastname">Nom</label>
+              <div class="alert row" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+                <span>Ce champ est requis</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mail_outline</i>
+              <input formControlName="email" id="email2" type="email">
+              <label for="email2">Email</label>
+              <div class="alert col s11 offset-s1" *ngIf="email_reg.errors && (email_reg.dirty || email_reg.touched)">
+                <span *ngIf="email_reg.errors.required">Ce champ est requis</span>
+                <span *ngIf="email_reg.errors.pattern">Veuillez rentrez une adresse email valide</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">lock_outline</i>
+              <input formControlName="password_reg" id="password_reg" type="password">
+              <label for="password_reg">Créer un mot de passe</label>
+              <div class="alert col s11 offset-s1"
+                   *ngIf="password_reg.errors && (password_reg.touched || password_reg.dirty)">
+                <span
+                  *ngIf="password_reg.errors.minlength">Le mot de passe est trop petit (8 caractéres nécessaires)</span>
+                <span *ngIf="password_reg.errors.required">Ce champ est requis</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s11 offset-s1">
+              <input formControlName="confirmPassword_reg" id="confirmPassword_reg" type="password">
+              <label for="confirmPassword_reg">Confirmer votre mot de passe</label>
+              <div class="alert col s11"
+                   *ngIf="confirmPassword_reg.errors && (confirmPassword_reg.touched || confirmPassword_reg.dirty)">
+                <span *ngIf="confirmPassword_reg.errors.minlength">Le mot de passe est trop petit (8 caractéres nécessaires)</span>
+                <span *ngIf="confirmPassword_reg.errors.required">Ce champ est requis</span>
+                <span
+                  *ngIf="!confirmPassword_reg.errors.minlength && !confirmPassword_reg.errors.required && confirmPassword_reg.errors.matchOther">Les mots de passe ne correspondent pas</span>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="alreadyExistEmail">
+            <div class="alert center-align">
+              <i class="material-icons prefix warning">warning</i>
+              <span>Adresse email déjà existante</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <button href="#" class="btn waves-effect waves-light col s12" [disabled]="registerForm.invalid"
+                      (click)="onRegistration()" type="submit">S'inscrire
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Content -->
+<div class="parallax-container center valign-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 white-text">
+        <img id="indexLogo" src="../../../assets/images/logohestia.png">
+        <h1>Bienvenue sur Hestia</h1>
+        <ul class="buttons">
+          <li><a class="modal-trigger" id="coButton" href="#login" (click)="openConnexion()">Connexion</a></li>
+          <li><a class="modal-trigger" id="inscButton" href="#register" (click)="openRegistration()">Inscription</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="parallax">
+    <img src="../../../assets/images/homepage/smart_home.png">
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="leftTitle"><h2>Hestia, c'est quoi ?</h2>
+      <h4 class="light">
+        Les incidents du quotidien ne seront plus un problème pour vous.
+      </h4>
+    </div>
+    <div class="rightTitle">
+      <p class="light">
+       Déclarez et visualisez vos incidents facilement grâce à la plateforme web Hestia.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="parallax-container center valign-wrapper">
+  <div class="parallax">
+    <img src="../../../assets/images/homepage/board.png">
+  </div>
+
+  <div class="container white-text">
+    <div class="row">
+      <div class="col s12">
+        <img src="../../../assets/images/homepage/msg_pattern_gr.png">
+        <img src="../../../assets/images/homepage/rsp_pattern_gr.png">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container center-align">
+  <div class="section">
+    <div class="row">
+      <div class="col s12">
+        <h4>Contact Us</h4>
+        <p class="light left-align">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam
+          pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo,
+          ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum
+          sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper
+          molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non
+          tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="parallax-container center valign-wrapper">
+  <div class="parallax"><img
+    src="https://images.unsplash.com/photo-1489289827069-adf270f4f417?dpr=1&auto=format&fit=crop&w=1500&h=2250&q=80&cs=tinysrgb&crop=">
+  </div>
+
+  <div class="container white-text">
+    <div class="row">
+      <div class="col s12">
+        <h5>Description de l'équipe</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer orange">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Infos</h5>
+        <p class="grey-text text-lighten-4">
+          Text text text text ici
+        </p>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Infos</h5>
+        <ul>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 1</a>
+          </li>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 2</a>
+          </li>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 3</a>
+          </li>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 4</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col l3 s12">
+        <h5 class="white-text">Encore</h5>
+        <ul>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 1</a>
+          </li>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 2</a>
+          </li>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 3</a>
+          </li>
+          <li>
+            <a href="#!" class="grey-text text-lighten-3">Link 4</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      Hestia
+    </div>
+  </div>
+</footer>

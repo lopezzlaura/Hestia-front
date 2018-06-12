@@ -1,0 +1,33 @@
+<body>
+<div class="container" style="text-align: center; font-family: sans-serif;color: #1C1C1C;background-color: #E1E1E1;margin: 5%;">
+
+  <div class="heading" style="width: 100%;background-image: linear-gradient(to right, #660B15, #AB1323);color: #FFFFFF;font-weight: bold;padding-top: 50px;padding-bottom: 50px;">
+    <img src="cid:logo-small" class="logo-small"/>
+    <h1>Bienvenue sur Hestia</h1>
+    <h2><%= user.firstname %> <%= user.lastname %></h2>
+  </div>
+
+  <div class="text" style="font-size: 1.1em;margin: 15px;">
+    <p>
+      Vous avez été ajouté au système de suivi d'incidents Hestia.
+    </p>
+  </div>
+
+  <div class="button" style="margin-left: 200px;margin-right: 200px;margin-top: 50px;margin-bottom: 50px;">
+    <a href="<%= verifyHref %>" role="button" class="email-button" style="color: #FFFFFF;text-decoration: none;font-weight: bold;padding: 20px;background-image: linear-gradient(to right, #660B15, #AB1323);box-shadow: 0px 5px 10px 0.01px #1C1C1C;border-radius: 0px;">Clicker ici pour poursuivre l'inscription</a>
+  </div>
+
+  <div class="link_failed">
+    <p>
+      Si le lien ne fonctionne pas, allez à l'addresse suivante sur votre navigateur préféré.
+    </p>
+  </div>
+
+  <div class="broken_link">
+    <p>
+      <a href="<%= verifyHref %>" class="link"><%= verifyHref %></a>
+    </p>
+  </div>
+
+</div>
+</body>

@@ -1,0 +1,169 @@
+{
+  "name": "Member",
+  "plural": "Members",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "city": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "issues_rel": {
+      "type": "hasMany",
+      "model": "Issue",
+      "foreignKey": "authorId"
+    },
+    "assignedIssues": {
+      "type": "hasMany",
+      "model": "Issue",
+      "foreignKey": "thirdPartyId",
+      "through": "Assignment"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "manager",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "getRoles"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "getAuthenticated"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "manager",
+      "permission": "ALLOW",
+      "property": "getRoles"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW",
+      "property": "getRoles"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+    "testMethod": {
+      "accepts": [
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        },
+        {
+          "arg": "data",
+          "type": "string"
+        },
+        {
+          "arg": "number",
+          "type": "number"
+        }
+      ],
+      "returns": {
+        "arg": "data",
+        "type": "Object",
+        "root": true
+      },
+      "http": {
+        "verb": "get",
+        "path": "/testMethod"
+      }
+    },
+    "getRoles": {
+      "accepts": [
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": {
+        "arg": "roles",
+        "type": [
+          "string"
+        ]
+      },
+      "http": {
+        "verb": "get",
+        "path": "/getRoles"
+      }
+    },
+    "getAuthenticated": {
+      "accepts": [
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": {
+        "arg": "user",
+        "type": "object",
+        "root": true
+      },
+      "http": {
+        "verb": "get",
+        "path": "/getAuthenticated"
+      }
+    }
+  }
+}

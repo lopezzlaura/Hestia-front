@@ -1,0 +1,85 @@
+<div class="block">
+    <div class="img_container">
+        <img [src]="'https://www.gravatar.com/avatar/' + hash + '?d=mm'" class="circle"/>
+        <div class="bottom_line"></div>
+    </div>
+    <div class="profile_name">
+        <p class="title">{{member?.firstname + " " + member?.lastname}}</p>
+        <p>{{member?.email}}</p>
+    </div>
+</div>
+<div class="change_pw">
+    <div class="container">
+        <div class="row" *ngIf="formsLoaded | async">
+            <form [formGroup]="changePassForm" class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input formControlName="actualPass" class="validate" type="password" id="actualPass">
+                        <label for="actualPass">Mot de passe actuel</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input formControlName="newPass" id="newPass" type="password" class="validate">
+                        <label for="newPass">Nouveau mot de passe</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input formControlName="confirmNewPass" id="confirmNewPass" type="password"
+                               class="validate">
+                        <label for="confirmNewPass">Confirmer le mot de passe</label>
+                    </div>
+                    <div *ngIf="confirmNewPass.errors"><span
+                            *ngIf="!confirmNewPass.errors.minlength && !confirmNewPass.errors.required && confirmNewPass.errors.matchOther">Les mots de passe ne correspondent pas</span>
+                    </div>
+                </div>
+
+                <div class="row col s12">
+                    <button class="btn waves-effect waves-light" [disabled]="changePassForm.invalid"
+                            (click)="onPassChange()"
+                            name="action">
+                        Valider
+                        <i class="material-icons right">send</i>
+                    </button>
+                    <div *ngIf="errorThrown | async"><p class="currentPassError">Le mot de passe saisit ne correspond
+                        pas au mot de passe actuel</p></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="change_city">
+    <div class="container">
+        <div class="row" *ngIf="formsLoaded | async">
+            <form [formGroup]="cityForm" class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input formControlName="newCity" class="validate" type="text" id="newCity">
+                        <label for="newCity">Ville de votre habitation</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input formControlName="pass" id="pass" type="password" class="validate">
+                        <label for="pass">Mot de passe</label>
+                    </div>
+                </div>
+
+                <div class="row col s12">
+                    <button class="btn waves-effect waves-light" [disabled]="cityForm.invalid"
+                            (click)="onCitySet()"
+                            name="action">
+                        Valider
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="graphs_stats">
+
+</div>

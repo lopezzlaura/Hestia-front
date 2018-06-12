@@ -1,0 +1,77 @@
+<div class="row">
+    <div>
+        <div *ngIf="canBeAssigned | async">
+            <input [value]="1" name="visu_filter" type="radio"
+                   id="assignedIncidents" (click)="changeValue('assignes')" checked/>
+            <label for="assignedIncidents">Incidents assignés</label>
+        </div>
+        <div *ngIf="!(isGuest | async)">
+            <input [value]="2" name="visu_filter" (click)="changeValue('declares')" type="radio"
+                   id="myIncidents"/>
+            <label for="myIncidents">Incidents déclarés</label>
+        </div>
+        <div *ngIf="isManager | async">
+            <input [value]="3" name="visu_filter" (click)="changeValue('noassignes')" type="radio"
+                   id="notAssigned"/>
+            <label for="notAssigned">Incidents non assignés</label>
+        </div>
+    </div>
+
+    <div>
+        <div class="col s4 non_traites">
+            <h4>Non traités</h4>
+            <div *ngIf="isSelected('assignes')" class="drag-not" [dragula]='"first-bag"'>
+                <div *ngFor="let issue of (memberIssue | async | statePipe:-1)">
+                    <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="false"></app-issue>
+                </div>
+            </div>
+            <div *ngIf="isSelected('declares')">
+                <div *ngFor="let issue of (issues | async | incidentTypePipe:this.idUser | statePipe:-1)">
+                    <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="true"></app-issue>
+                </div>
+            </div>
+            <div *ngIf="isSelected('noassignes')" class="drag-not" [dragula]='"first-bag"'>
+                <div *ngFor="let issue of (issues | async | incidentTypePipe:0:true | statePipe:-1)">
+                    <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="false"></app-issue>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s4 en_cours">
+            <h4>En cours</h4>
+            <div *ngIf="isSelected('assignes')" class="drag-wip" [dragula]='"first-bag"'>
+                <div *ngFor="let issue of (memberIssue | async | statePipe:0)">
+                    <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="false"></app-issue>
+                </div>
+            </div>
+            <div *ngIf="isSelected('declares')">
+                <div *ngFor="let issue of (issues | async | incidentTypePipe:this.idUser:false | statePipe:0)">
+                    <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="true"></app-issue>
+                </div>
+            </div>
+            <div *ngIf="isSelected('noassignes')" class="drag-wip" [dragula]='"first-bag"'>
+                <div *ngFor="let issue of (issues | async | incidentTypePipe:0:true  | statePipe:0)">
+                    <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="false"></app-issue>
+                </div>
+            </div>
+        </div>
+        <div class="col s4 resolus">
+            <h4>Résolus</h4>
+            <div *ngIf="isSelected('assignes')" class="drag-resolve" [dragula]='"first-bag"'>
+                <div *ngFor="let issue of (memberIssue | async | statePipe:1 )">
+                    <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="false"></app-issue>
+                </div>
+            </div>
+            <div *ngIf="isSelected('declares')">
+                <div *ngFor="let issue of (issues | async | incidentTypePipe:this.idUser:false | statePipe:1)">
+                    <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="true"></app-issue>
+                </div>
+            </div>
+            <div *ngIf="isSelected('noassignes')" class="drag-resolve" [dragula]='"first-bag"'>
+                <div *ngFor="let issue of (issues | async | incidentTypePipe:0:true | statePipe:1)">
+                    <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="false"></app-issue>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

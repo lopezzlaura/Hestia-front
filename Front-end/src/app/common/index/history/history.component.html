@@ -1,0 +1,10 @@
+<div class="history_block col s6">
+    <h2 style="font-size : 42px;">Actualités</h2>
+    <ul class="collection" *ngFor="let history of (histories | async)">
+        <li class="collection-item avatar"(click)="btnClick()" style="cursor : pointer">
+            <img src="{{history.getImg()}}" alt=""
+                 class="circle">
+            <span style="margin-top: 7px;" class="title">L'incident "{{history.issue?.title}}" {{history.origin}} par {{history.member?.firstname + " " + history.member?.lastname}} </span>
+        </li>
+    </ul>
+</div>

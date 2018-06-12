@@ -1,0 +1,25 @@
+{
+  "name": "Assignment",
+  "plural": "Assignments",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "member": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "thirdPartyId"
+    },
+    "issue": {
+      "type": "belongsTo",
+      "model": "Issue",
+      "foreignKey": "issueId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
