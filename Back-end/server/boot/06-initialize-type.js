@@ -22,6 +22,10 @@ module.exports = function(app, callback) {
       "value":5,
       "name": "Autres",
     },
+    {
+      "value":6,
+      "name": "Objets connectés",
+    },
   ];
 
   const Type = app.models.Type;

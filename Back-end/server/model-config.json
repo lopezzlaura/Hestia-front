@@ -78,7 +78,7 @@
     "dataSource": "db",
     "public": true
   },
-  "area": {
+  "Area": {
     "dataSource": "db",
     "public": true
   },

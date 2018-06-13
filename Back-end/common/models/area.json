@@ -1,5 +1,5 @@
 {
-  "name": "area",
+  "name": "Area",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

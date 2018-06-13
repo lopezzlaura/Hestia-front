@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {IssueModel} from '../../../shared/models/IssueModel';
 import {MatDialog} from '@angular/material/dialog';
-import {DialogOverviewComponent} from "./dialog-overview.component";
+import {DialogOverviewComponent} from "./dialog-overview-issues/dialog-overview.component";
 import {ConnectedObjectService} from "../../../shared/services/connected_object.service";
 
 @Component({

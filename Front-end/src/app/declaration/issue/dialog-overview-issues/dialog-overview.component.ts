@@ -2,18 +2,18 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Component, EventEmitter, Inject} from "@angular/core";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {forkJoin} from "rxjs/observable/forkJoin";
-import {TypeModel} from "../../../shared/models/TypeModel";
-import {EmergencyModel} from "../../../shared/models/EmergencyModel";
-import {EmergencyService} from "../../../shared/services/emergency.service";
-import {TypeService} from "../../../shared/services/type.service";
-import {InhabitantService} from "../../../shared/services/inhabitant.service";
-import {InhabitantModel} from "../../../shared/models/InhabitantModel";
+import {TypeModel} from "../../../../shared/models/TypeModel";
+import {EmergencyService} from "../../../../shared/services/emergency.service";
+import {TypeService} from "../../../../shared/services/type.service";
+import {InhabitantService} from "../../../../shared/services/inhabitant.service";
+import {InhabitantModel} from "../../../../shared/models/InhabitantModel";
 import {MaterializeAction} from "angular2-materialize";
-import {IssueService} from "../../../shared/services/issue.service";
-import {HistoryService} from "../../../shared/services/history.service";
-import {AssignmentService} from "../../../shared/services/assignment.service";
-import {IssueModel} from "../../../shared/models/IssueModel";
-import {GuestGuard} from "../../guards/guest-guard";
+import {IssueService} from "../../../../shared/services/issue.service";
+import {HistoryService} from "../../../../shared/services/history.service";
+import {AssignmentService} from "../../../../shared/services/assignment.service";
+import {IssueModel} from "../../../../shared/models/IssueModel";
+import {GuestGuard} from "../../../guards/guest-guard";
+import {EmergencyModel} from "../../../../shared/models/EmergencyModel";
 
 @Component({
     selector: 'dialog-overview-example',

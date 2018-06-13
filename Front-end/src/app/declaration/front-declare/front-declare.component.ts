@@ -11,11 +11,13 @@ import {forkJoin} from "rxjs/observable/forkJoin";
 import {InhabitantService} from "../../../shared/services/inhabitant.service";
 import {InhabitantModel} from "../../../shared/models/InhabitantModel";
 import {MaterializeAction} from "angular2-materialize";
-import {DialogInhabitantComponent} from "./dialog-inhabitant.component";
+import {DialogInhabitantComponent} from "./dialog-inhabitant/dialog-inhabitant.component";
 import {MatDialog} from "@angular/material/dialog";
 import {HistoryService} from "../../../shared/services/history.service";
 import {AssignmentService} from "../../../shared/services/assignment.service";
 import {DatePipe} from "@angular/common";
+import {AreaModel} from "../../../shared/models/AreaModel";
+import {ConnectedObjectModel} from "../../../shared/models/ConnectedObjectModelForRequest";
 
 @Component({
     selector: "app-front-declare",
@@ -26,6 +28,8 @@ export class FrontDeclareComponent implements OnInit {
     types: TypeModel[];
     declareForm: FormGroup;
     emergencies: EmergencyModel[];
+    areas: AreaModel[];
+    connectedObjects: ConnectedObjectModel[];
     inhabitants: InhabitantModel[];
     assignees: Array<string> = [];
     currentMemberId: number;
@@ -42,7 +46,7 @@ export class FrontDeclareComponent implements OnInit {
 
     constructor(private typeService: TypeService, private emergencyService: EmergencyService, private formBuilder: FormBuilder,
                 private issueService: IssueService, private inhabitantService: InhabitantService, private dialog: MatDialog,
-                private historyService: HistoryService, private datePipe : DatePipe, private assignmentService: AssignmentService) {
+                private historyService: HistoryService, private datePipe: DatePipe, private assignmentService: AssignmentService) {
     }
 
     add(chip) {
@@ -176,7 +180,7 @@ export class FrontDeclareComponent implements OnInit {
         formData.append("description", this.declareForm.get("description").value);
         formData.append("location", this.declareForm.get("location").value == "" ? null : this.declareForm.get("location").value);
         console.log(new Date(this.declareForm.get("date").value).toDateString());
-        formData.append("date", this.declareForm.get("date").value == null ?  this.datePipe.transform(new Date(), "dd-MM-yyyy").toString() : this.datePipe.transform(new Date(this.declareForm.get("date").value), "dd-MM-yyyy").toString());
+        formData.append("date", this.declareForm.get("date").value == null ? this.datePipe.transform(new Date(), "dd-MM-yyyy").toString() : this.datePipe.transform(new Date(this.declareForm.get("date").value), "dd-MM-yyyy").toString());
         formData.append("time", this.declareForm.get("time").value != null ? this.declareForm.get("time").value.toString() : null);
         return formData;
     }

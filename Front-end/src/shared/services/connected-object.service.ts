@@ -1,7 +1,7 @@
 import {HttpClient} from "@angular/common/http";
 import {RestService} from "./rest/rest.service";
-import {ConnectedObjectModel} from "../models/ConnectedObjectModel";
 import {API_URL} from "./rest/constants";
+import {ConnectedObjectModel} from "../models/ConnectedObjectModelForRequest";
 
 
 export class ConnectedObjectService {

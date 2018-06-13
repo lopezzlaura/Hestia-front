@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {IssueComponent} from './issue.component';
-import {DialogOverviewComponent} from "./dialog-overview.component";
+import {DialogOverviewComponent} from "./dialog-overview-issues/dialog-overview.component";
 import {MatDialogModule} from '@angular/material/dialog';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from '@angular/material/button';
