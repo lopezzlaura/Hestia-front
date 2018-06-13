@@ -73,5 +73,13 @@
   "Assignment": {
     "dataSource": "postgres",
     "public": true
+  },
+  "connectedObject": {
+    "dataSource": "db",
+    "public": true
+  },
+  "area": {
+    "dataSource": "db",
+    "public": true
   }
 }

@@ -1,0 +1,24 @@
+{
+  "name": "area",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "objects_rel": {
+      "type": "hasMany",
+      "model": "connectedObject",
+      "foreignKey": "object-id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

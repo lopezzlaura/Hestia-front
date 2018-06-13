@@ -7,9 +7,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from '@angular/material/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterializeModule} from "angular2-materialize";
+import { DialogOverviewIotComponent } from './dialog-overview-iot/dialog-overview-iot.component';
 
 @NgModule({
-    declarations: [IssueComponent, DialogOverviewComponent],
+    declarations: [IssueComponent, DialogOverviewComponent, DialogOverviewIotComponent],
     imports: [CommonModule, MatDialogModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, MaterializeModule, MatButtonModule],
     exports: [IssueComponent],
     providers: [],
