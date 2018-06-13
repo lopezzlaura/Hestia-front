@@ -1,0 +1,18 @@
+<div class="col s3">
+    <div class="card horizontal">
+        <div class="card-stacked">
+            <div class="card-content">
+                <p>Activer ou désactiver le mode Vacances.</p>
+            </div>
+            <div class="card-action">
+                <button class="btn waves-effect waves-light" (click)="onClick()"
+                        name="action">
+                    {{display}}
+                    <i *ngIf="display=='Désactiver'" class="material-icons right logo">highlight_off</i>
+                    <i *ngIf="display=='Activer'" class="material-icons right logo">check_circle_outline</i>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>

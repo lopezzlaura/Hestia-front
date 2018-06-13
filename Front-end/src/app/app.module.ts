@@ -7,6 +7,7 @@ import {NavBarModule} from "./common/navbar/nav-bar.module";
 import {HomePageModule} from "./common/homepage/app-homepage.module";
 import {AuthService} from "../shared/services/auth/auth.service";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {FormsModule} from '@angular/forms';
 import {TokenInterceptor} from "../shared/services/auth/token.interceptor";
 import {AdminModule} from "./common/admin";
 import {RestService} from "../shared/services/rest/rest.service";
@@ -15,6 +16,7 @@ import {CommonPageModule} from "./common/app-common.module";
 import {AdminService} from "../shared/services/admin.service";
 import {ManageMemberModule} from "./common/admin/manage-members";
 import {AuthGuard} from "./guards/auth-guard";
+import {ReactiveFormsModule} from '@angular/forms/'
 import {HomeIndexModule} from "./common/index";
 import {AdminGuard} from "./guards/admin-guard";
 import {GuardHelper} from "./guards/guard-helper";
@@ -44,11 +46,13 @@ import {HistoryService} from "../shared/services/history.service";
         BrowserModule,
         AppRoutingModule,
         NavBarModule,
+        ReactiveFormsModule,
         HomePageModule,
         HomeIndexModule,
         ManageMemberModule,
         WeatherModule,
         RankingModule,
+        FormsModule,
         AdminModule,
         CommonPageModule,
         MaterializeModule,

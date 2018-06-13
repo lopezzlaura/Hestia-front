@@ -1,9 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900);
-                                  *, *:before, *:after {
+
+*, *:before, *:after {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-
 
 .sunWithCloud .cloudOnly {
     top: 20px;
@@ -148,6 +148,17 @@
     box-shadow: #353535 24px -6px 0 0px, #353535 10px 5px 0 0px, #353535 30px 5px 0 0px, #353535 11px -8px 0 0px, #353535 25px 11px 0 0px, #353535 40px 8px 0 0px, #353535 -7px -1px 0 0px;
 }
 
+.storm {
+    margin-right: 60px;
+    background: #000000;
+    border-radius: 20px;
+    border-color: #000000;
+    width: 25px;
+    height: 25px;
+    -webkit-box-shadow: #000000 24px -6px 0 2px, #000000 10px 5px 0 5px, #000000 30px 5px 0 2px, #000000 11px -8px 0 -3px, #000000 25px 11px 0 -1px;
+    box-shadow: #000000 24px -6px 0 2px, #000000 10px 5px 0 5px, #000000 30px 5px 0 2px, #000000 11px -8px 0 -3px, #000000 25px 11px 0 -1px;
+}
+
 .cloudOnly {
     margin-right: 60px;
     background: #b6cede;
@@ -156,6 +167,21 @@
     height: 25px;
     -webkit-box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px, #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
     box-shadow: #b6cede 24px -6px 0 2px, #b6cede 10px 5px 0 5px, #b6cede 30px 5px 0 2px, #b6cede 11px -8px 0 -3px, #b6cede 25px 11px 0 -1px;
+}
+
+.storm:after {
+    content: "";
+    position: absolute;
+    border-radius: 10px;
+    background-color: transparent;
+    width: 4px;
+    height: 12px;
+    left: 0;
+    top: 31px;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+    -webkit-animation: storm 800ms ease-in-out infinite alternate;
+    animation: storm 800ms ease-in-out infinite alternate;
 }
 
 .cloudRain:after {
@@ -192,6 +218,28 @@
     to {
         -webkit-box-shadow: #2092A9 8px 6px, #2092A9 32px 0px, #2092A9 20px 6px;
         box-shadow: #2092A9 8px 6px, #2092A9 32px 0px, #2092A9 20px 6px;
+    }
+}
+
+@-webkit-keyframes storm {
+    from {
+        -webkit-box-shadow: #ECE725 8px 0px, #ECE725 32px -6px, #ece725 20px 0px;
+        box-shadow: #ECE725 8px 0px, #ECE725 32px -6px, #ECE725 20px 0px;
+    }
+    to {
+        -webkit-box-shadow: #ECE725 8px 6px, #ECE725 32px 0px, #ECE725 20px 6px;
+        box-shadow: #ECE725 8px 6px, #ECE725 32px 0px, #ECE725 20px 6px;
+    }
+}
+
+@keyframes storm {
+    from {
+        -webkit-box-shadow: #ECE725 4px 0px, #ECE725 4px -6px, #ECE725 4px 0px;
+        box-shadow: #ECE725 4px 0px, #ECE725 4px -6px, #ECE725 4px 0px;
+    }
+    to {
+        -webkit-box-shadow: #ECE725 8px 6px, #ECE725 8px 0px, #ECE725 8px 6px;
+        box-shadow: #ECE725 8px 6px, #ECE725 8px 0px, #ECE725 8px 6px;
     }
 }
 

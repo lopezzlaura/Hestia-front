@@ -1,0 +1,159 @@
+[
+  {
+    "id": "45cc7449.5a195c",
+    "type": "tab",
+    "label": "Flow 3"
+  },
+  {
+    "id": "19a467ac.a8eba8",
+    "type": "mosca in",
+    "z": "45cc7449.5a195c",
+    "mqtt_port": 1883,
+    "mqtt_ws_port": 8080,
+    "name": "",
+    "username": "",
+    "password": "",
+    "dburl": "",
+    "x": 149,
+    "y": 67,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "811eb811.d17888",
+    "type": "mqttin",
+    "z": "45cc7449.5a195c",
+    "name": "",
+    "topic": "/home/+/+/#",
+    "qos": "2",
+    "broker": "aa872460.7dff18",
+    "x": 129,
+    "y": 148,
+    "wires": [
+      [
+        "f5868538.c4e148"
+      ]
+    ]
+  },
+  {
+    "id": "d0ffe662.31c688",
+    "type": "mqtt        out",
+    "z": "45cc7449.5a195c",
+    "name": "mqtt thingspeakout",
+    "topic": "",
+    "qos": "",
+    "retain": "",
+    "broker": "18d4ce79.021f92",
+    "x": 599,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "f5868538.c4e148",
+    "type": "function",
+    "z": "45cc7449.5a195c",
+    "name": "translatehomeiopayloadtothingspeak",
+    "func": "var API_KEY =\"xxxx\";\n\nvartopicSplit=msg.topic.split(/[/]+/);\n\n//Flagcontinuousmessages\nmsg.shouldBeThrottled=false;\nif(\ntopicSplit[3]==\"Memory\"||\ntopicSplit[5].startsWith(\"Thermostat\")||\ntopicSplit[5].startsWith(\"Date_and_Time\")||\ntopicSplit[5].startsWith(\"Brightness\")){\nmsg.shouldBeThrottled=true;\n}\n\n//BuildThingSpeakpayload\nvarvalue=msg.payload;\nif(topicSplit[3]==\"bool\"){\nvalue=msg.payload==\"True\"?1:0;\n}\nmsg.payload=Date.now()+\",\"  +  topicSplit[topicSplit.length-1] +\",\"  +  value  +\",\"  +API_KEY;\nmsg.topic=\"devices\" + msg.topic;\n\n//Don't proceed if the API keyisn't    set    properly\nif(API_KEY==\"xxxx\")    return    null;\n\nreturnmsg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 472,
+    "y": 146,
+    "wires": [
+      [
+        "3d1be41d.edff7c"
+      ]
+    ]
+  },
+  {
+    "id": "c71aa5da.5f9328",
+    "type": "delay",
+    "z": "45cc7449.5a195c",
+    "name": "limit   continunous update rate",
+    "pauseType": "timed",
+    "timeout": "5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "30",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": true,
+    "x": 526,
+    "y": 232,
+    "wires": [
+      [
+        "d0ffe662.31c688"
+      ]
+    ]
+  },
+  {
+    "id": "3d1be41d.edff7c",
+    "type": "switch",
+    "z": "45cc7449.5a195c",
+    "name": "filtercontinuousupdatedata",
+    "property": "shouldBeThrottled",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "true",
+        "vt": "jsonata"
+      },
+      {
+        "t": "eq",
+        "v": "false",
+        "vt": "jsonata"
+      }
+    ],
+    "checkall": "true",
+    "outputs": 2,
+    "x": 226,
+    "y": 267,
+    "wires": [
+      [
+        "c71aa5da.5f9328"
+      ],
+      [
+        "d0ffe662.31c688"
+      ]
+    ]
+  },
+  {
+    "id": "aa872460.7dff18",
+    "type": "mqtt-broker",
+    "z": "",
+    "broker": "localhost",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": ""
+  },
+  {
+    "id": "18d4ce79.021f92",
+    "type": "mqtt-broker",
+    "z": "",
+    "broker": "sparks-vm24.i3s.unice.fr",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": ""
+  }
+]
