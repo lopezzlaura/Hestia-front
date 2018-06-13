@@ -37,6 +37,7 @@ import {RankingModule} from "./common/index/ranking/ranking.module";
 import {RankingService} from "../shared/services/ranking.service";
 import {AssignmentService} from "../shared/services/assignment.service";
 import {HistoryService} from "../shared/services/history.service";
+import {ConnectedObjectService} from "../shared/services/connected_object.service";
 
 @NgModule({
     declarations: [
@@ -72,6 +73,7 @@ import {HistoryService} from "../shared/services/history.service";
         InhabitantService,
         EmergencyService,
         HistoryService,
+        ConnectedObjectService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,

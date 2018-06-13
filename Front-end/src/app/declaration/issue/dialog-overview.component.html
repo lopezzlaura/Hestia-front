@@ -9,7 +9,9 @@
                         <select formControlName="typeCB" name="selectedOptionType"
                                 materialize="material_select"
                                 [materializeSelectOptions]="selectOptionsType">
-                            <option *ngFor="let option of types" [value]="option.id" onchange="setTypeValue()" [attr.selected]="selectedType">{{option.name}}</option>
+                            <option *ngFor="let option of types" [value]="option.id" onchange="setTypeValue()"
+                                    [attr.selected]="selectedType">{{option.name}}
+                            </option>
                         </select>
                     </div>
 
@@ -18,7 +20,9 @@
                         <select formControlName="emergencyCB" name="selectedOptionPriority"
                                 materialize="material_select"
                                 [materializeSelectOptions]="selectOptionsPriority">
-                            <option *ngFor="let emergency of emergencies" [value]="emergency.id" onchange="setEmergencyValue()" [attr.selected]="selectedEmergency">{{emergency.name}}
+                            <option *ngFor="let emergency of emergencies" [value]="emergency.id"
+                                    onchange="setEmergencyValue()" [attr.selected]="selectedEmergency">
+                                {{emergency.name}}
                             </option>
                         </select>
                     </div>
@@ -100,7 +104,7 @@
             <p>Description : {{data.description}}</p>
             <div>Personne(s) désignée(s) :
                 <div *ngIf="data.assignMember.length == 0">Aucun membre assigné</div>
-                <div *ngFor="let member of (data.assignMember)" >
+                <div *ngFor="let member of (data.assignMember)">
                     {{member.firstname + " " + member.lastname}}
                 </div>
             </div>

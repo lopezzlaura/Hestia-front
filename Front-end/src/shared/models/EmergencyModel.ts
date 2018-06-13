@@ -1,5 +1,5 @@
 /**
- * Class that models an state of an issue
+ * Class that models the state of an issue
  */
 
 export class EmergencyModel {

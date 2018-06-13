@@ -1,15 +1,14 @@
 /**
- * Class that does some stuff
+ * Class that models the connected objects of the house
  */
-export class ConnectedObjectModel {
-    public id: number;
-    public zone: string;
-    public value: boolean;
-    public object: string;
 
-    constructor(area: string, on: boolean, object:string) {
-        this.zone = area;
-        this.value = on;
-        this.object = object;
+export class ConnectedObjectModel {
+
+    public id: number;
+    public name: string;
+
+    constructor(id: number, name: string) {
+        this.id = id;
+        this.name = name;
     }
 }
