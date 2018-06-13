@@ -1,0 +1,37 @@
+<!--
+
+<mat-dialog-actions>
+    <i class="material-icons right" (click)="close()" style="cursor: pointer">clear</i>
+</mat-dialog-actions>
+<div class="details-image">
+    <img class="responsive-img" src={{data.image}}>
+</div>
+<div class="card-head">
+    <h2>{{data.connectedObject}} : {{data.title}}</h2>
+    <p>{{data.author}}</p>
+</div>
+<mat-dialog-content>
+    <div>
+
+        <p>Importance : {{data.emergency?.name}}</p>
+        <p>Pièce : {{data.lieu}}</p>
+        <p class="date-label">Date : {{data.date}}</p>
+        <p class="date-label">Heure : {{data.time}}</p>
+
+         <div>Rapport d'action(s) effectuée(s) :
+            <div *ngIf="data.actionsToDo.length == 0">Aucune action à effectuer</div>
+            <div *ngFor="let action of (data.actionsToDo)" >
+                {{action.actionDescription}}
+            </div>
+        </div>
+
+    </div>
+
+</mat-dialog-content>
+<button *ngIf="data.canEdit" class="btn waves-effect waves-light" (click)="edit()"
+        name="action"><i class="material-icons right">edit</i></button>
+<button *ngIf="data.canEdit" class="btn waves-effect waves-light" (click)="deleteIssue()" name="delete">
+    <i class="material-icons right">delete</i>
+</button>
+
+-->

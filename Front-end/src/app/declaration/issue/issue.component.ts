@@ -27,6 +27,7 @@ export class IssueComponent implements OnInit {
                 title: this.issueElement.title,
                 image: this.issueElement.getImg(),
                 description: this.issueElement.description,
+                emergency: this.issueElement.emergency,
                 lieu: this.issueElement.location,
                 thirdParty: this.issueElement.thirdParty?this.issueElement.thirdParty.firstname + " " + this.issueElement.thirdParty.lastname:"Aucune personne désignée",
                 type: this.issueElement.type.name,
