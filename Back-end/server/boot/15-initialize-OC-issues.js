@@ -6,20 +6,16 @@ module.exports = function (app, callback) {
       "title": "Eteindre la lumière",
       "description": "Extinction des feux dans la chambre des enfants",
       "actionType": "Eteindre",
-      "zoneType": "",
-      "zoneId": "",
-      "date": "",
-      "time": "",
+      "date": "A",
+      "time": "A",
       "emergencyId": "1"
     },
     {
       "title": "Allumer la lumière",
       "description": "Allumage des feux dans la chambre des enfants",
       "actionType": "Allumer",
-      "zoneType": "",
-      "zoneId": "",
-      "date": "",
-      "time": "",
+      "date": "A",
+      "time": "A",
       "emergencyId": "1"
     }
   ];
@@ -34,8 +30,6 @@ module.exports = function (app, callback) {
           title: request.title,
           description: request.description,
           actionType: request.actionType,
-          zoneType: request.zoneType,
-          zoneId: request.zoneId,
           date: request.date,
           time: request.time,
           emergencyId: request.emergencyId
@@ -47,7 +41,7 @@ module.exports = function (app, callback) {
         res();
       });
     }));
-  });
+  });!
   Promise.all(promises)
     .then(() => {
       callback();
