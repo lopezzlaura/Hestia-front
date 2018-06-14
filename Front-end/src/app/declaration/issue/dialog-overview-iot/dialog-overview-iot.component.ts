@@ -5,7 +5,7 @@ import {forkJoin} from "rxjs/observable/forkJoin";
 import {AssignmentService} from "../../../../shared/services/assignment.service";
 import {InhabitantModel} from "../../../../shared/models/InhabitantModel";
 import {MaterializeAction} from "angular2-materialize";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {IssueService} from "../../../../shared/services/issue.service";
 import {IssueModel} from "../../../../shared/models/IssueModel";
 import {HistoryService} from "../../../../shared/services/history.service";
@@ -63,16 +63,6 @@ export class DialogOverviewIotComponent implements OnInit {
             this.selectedType = this.currentIssue.typeId;
             this.selectedEmergency = this.currentIssue.emergencyId;
             this.authorId = this.currentIssue.authorId;
-            this.editForm = this.formBuilder.group({
-                    typeCB: [],
-                    emergencyCB: [],
-                    title: [this.currentIssue.title, Validators.required],
-                    description: [this.currentIssue.description, Validators.required],
-                    location: [this.currentIssue.location ? this.currentIssue.location : null],
-                    date: [this.currentIssue.date ? this.currentIssue.date : null],
-                    time: [this.currentIssue.time ? this.currentIssue.time : null]
-                }
-            );
             this.formLoaded = Promise.resolve(true);
         });
 
