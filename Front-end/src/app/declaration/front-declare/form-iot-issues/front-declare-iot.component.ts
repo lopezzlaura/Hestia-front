@@ -45,8 +45,8 @@ export class FrontDeclareIotComponent implements OnInit {
                         actionCB: [Validators.required],
                         areasCB: [Validators.required],
                         objectCB: [Validators.required],
-                        date: [Validators.required],
-                        time: [Validators.required]
+                        date: [],
+                        time: []
                     }
                 );
                 this.formLoaded = Promise.resolve(true);
