@@ -1,16 +1,11 @@
-import {InhabitantModel} from "./InhabitantModel";
-import {EmergencyModel} from "./EmergencyModel";
-import {AreaModel} from "./AreaModel";
-import {ConnectedObjectModel} from "./ConnectedObjectModel";
-import {InhabitantService} from "../services/inhabitant.service";
-import {EmergencyService} from "../services/emergency.service";
-import {forkJoin} from "rxjs/observable/forkJoin";
-import {ConnectedObjectService} from "../services/connected_object.service";
-import {AreaService} from "../services/area.service";
-
 /**
  * Class that models the connected objects of the house
  */
+import {ConnectedObjectModel} from "./ConnectedObjectModel";
+import {AreaModel} from "./AreaModel";
+import {AreaService} from "../services/area.service";
+import {ConnectedObjectService} from "../services/connected_object.service";
+import {forkJoin} from "rxjs/observable/forkJoin";
 
 export class ConnectedObjectRequestModel {
 
@@ -20,11 +15,12 @@ export class ConnectedObjectRequestModel {
     public emergencyId: number;
     public actionType: string;
     public date: string;
-    public heure: string;
+    public time: string;
     public areaId: number;
     public emergency: EmergencyModel;
     public area: AreaModel;
     public connectedObjectId: number;
+    public connectedObject: ConnectedObjectModel;
     public author: InhabitantModel;
     public authorId: number;
     public connectedObject: ConnectedObjectModel;

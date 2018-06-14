@@ -6,18 +6,20 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor() {}
+    constructor() {
+    }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const token = AuthService.getToken() || "";
+        const token = AuthService.getToken() || "";
 
-    request = request.clone({
-      setHeaders: {
-        Authorization: token
-      }
-    });
+        request = request.clone({
+            setHeaders: {
+                Authorization: token,
+                "Access-Control-Allow-Origin": "http://localhost:4200"
+            }
+        });
 
-    return next.handle(request);
-  }
+        return next.handle(request);
+    }
 }

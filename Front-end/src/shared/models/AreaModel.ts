@@ -5,12 +5,12 @@
 export class AreaModel {
 
     public id: number;
-    public type: string;
+    public identifier: string;
     public name: string;
 
-    constructor(id: number, type: string, name: string) {
+    constructor(id: number, identifier: string, name: string) {
         this.id = id;
-        this.type = type;
+        this.identifier = identifier;
         this.name = name;
     }
 }

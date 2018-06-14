@@ -13,7 +13,7 @@
     },
     "identifier": {
       "type": "string",
-      "required": false
+      "required": true
     }
   },
   "validations": [],
@@ -21,7 +21,7 @@
     "objects_rel": {
       "type": "hasMany",
       "model": "connectedObject",
-      "foreignKey": "object-id"
+      "foreignKey": "area-id"
     }
   },
   "acls": [],

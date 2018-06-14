@@ -41,6 +41,7 @@ import {ConnectedObjectService} from "../shared/services/connected_object.servic
 import {HolidayService} from "../shared/services/holiday.service";
 import {HolidayModeModule} from "./common/index/holidaymode/holiday-mode.module";
 import {AreaService} from "../shared/services/area.service";
+import {ConnectedObjectRequestService} from "../shared/services/connected_object_request.service";
 
 @NgModule({
     declarations: [
@@ -80,6 +81,7 @@ import {AreaService} from "../shared/services/area.service";
         HistoryService,
         AreaService,
         ConnectedObjectService,
+        ConnectedObjectRequestService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,
