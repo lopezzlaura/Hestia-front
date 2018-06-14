@@ -1,5 +1,19 @@
-
+h1 {
+    font-size: 300%;
+}
 
 #title {
     text-align: center;
+}
+
+a {
+    color: #1c2529;
+}
+
+.right {
+    float: right;
+}
+
+#pics {
+    margin-top: 15px;
 }

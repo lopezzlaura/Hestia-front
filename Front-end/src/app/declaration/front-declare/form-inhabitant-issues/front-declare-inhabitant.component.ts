@@ -97,16 +97,13 @@ export class FrontDeclareInhabitantComponent implements OnInit {
             this.declareForm = this.formBuilder.group({
                     typeCB: [Validators.required],
                     emergencyCB: [Validators.required],
-                    areaCB: [],
-                    identifierCB: [],
                     title: [null, Validators.required],
                     description: [null, Validators.required],
                     location: [null],
                     date: [null],
                     time: [null]
                 }
-            )
-            ;
+            );
             this.formLoaded = Promise.resolve(true);
         });
 

@@ -19,14 +19,14 @@ export class AreaService {
     public getAreas(): Observable<AreaModel[]> {
         this.areaList$ = this.http.get<AreaModel[]>(API_URL + 'Areas');
         return this.http.get<AreaModel[]>(API_URL + 'Areas').map(models => models.map(model => {
-            return new AreaModel(model.id, model.type);
+            return new AreaModel(model.id, model.type, model.name);
         }));
     }
 
     public getAreasOfType(type: string): Observable<AreaModel[]> {
         this.areaList$ = this.http.get<AreaModel[]>(API_URL + 'Areas');
         return this.http.get<AreaModel[]>(API_URL + 'Areas').map(models => models.map(model => {
-            return new AreaModel(model.id, model.type);
+            return new AreaModel(model.id, model.type, model.name);
         }));
     }
 

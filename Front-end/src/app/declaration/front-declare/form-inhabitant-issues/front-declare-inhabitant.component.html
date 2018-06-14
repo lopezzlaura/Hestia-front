@@ -1,87 +1,57 @@
 <div class="container">
     <router-outlet>
-    <div *ngIf="formLoaded | async" class="row">
+        <div *ngIf="formLoaded | async" class="row">
 
-        <div class="row" id="title">
-            <h1>Déclarer un incident</h1>
-        </div>
-
-        <form [formGroup]="declareForm" class="col s12">
-
-            <div class="col s6">
-                <div class="row">
-                    <div class="col s12 m6">
-                        <label>Type d'incident *</label>
-                        <select formControlName="typeCB" name="selectedOptionType"
-                                materialize="material_select"
-                                [materializeSelectOptions]="selectOptionsType" (onchange)="changeValue()">
-                            <option value="" disabled selected>Choisir le type</option>
-                            <option *ngFor="let option of types" [value]="option.id">{{option.name}}</option>
-                        </select>
-                    </div>
-
-                    <div class="col s12 m6">
-                        <label>Urgence *</label>
-                        <select formControlName="emergencyCB" name="selectedOptionPriority"
-                                materialize="material_select"
-                                [materializeSelectOptions]="selectOptionsPriority">
-                            <option value="" disabled selected>Choisir l'urgence</option>
-                            <option *ngFor="let emergency of emergencies" [value]="emergency.id">{{emergency.name}}
-                            </option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input formControlName="title" id="incident_title" type="text" class="validate">
-                        <label for="incident_title">Titre de l'incident *</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input formControlName="description" type="text" id="description" class="validate">
-                        <label for="description">Description *</label>
-                    </div>
-                </div>
+            <div class="row" id="title">
+                <h1>Déclarer un incident</h1>
             </div>
 
-            <div *ngIf="isConnectedObject | async; else elseBlock " class="dialog_details">
+            <form [formGroup]="declareForm" class="col s12">
 
                 <div class="col s6">
                     <div class="row">
                         <div class="col s12 m6">
                             <label>Type d'incident *</label>
-                            <select formControlName="areaCB" name="selectedOptionType"
+                            <select formControlName="typeCB" name="selectedOptionType"
                                     materialize="material_select"
-                                    [materializeSelectOptions]="selectOptionsType">
-                                <option value="" disabled selected>Choisir la pièce</option>
-                                <option *ngFor="let option of areas" [value]="option.id">{{option.type}}</option>
+                                    [materializeSelectOptions]="selectOptionsType" (onchange)="changeValue()">
+                                <option value="" disabled selected>Choisir le type</option>
+                                <option *ngFor="let option of types" [value]="option.id">{{option.name}}</option>
                             </select>
                         </div>
 
                         <div class="col s12 m6">
                             <label>Urgence *</label>
-                            <select formControlName="identifierCB" name="selectedOptionPriority"
+                            <select formControlName="emergencyCB" name="selectedOptionPriority"
                                     materialize="material_select"
                                     [materializeSelectOptions]="selectOptionsPriority">
-                                <option value="" disabled selected>Choisir son identifiant</option>
+                                <option value="" disabled selected>Choisir l'urgence</option>
                                 <option *ngFor="let emergency of emergencies" [value]="emergency.id">{{emergency.name}}
                                 </option>
                             </select>
                         </div>
                     </div>
-                </div>
 
-            </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input formControlName="title" id="incident_title" type="text" class="validate">
+                            <label for="incident_title">Titre de l'incident *</label>
+                        </div>
+                    </div>
 
-            <ng-template #elseBlock class="dialog_details">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <div class="chips" materialize="material_chip" [materializeParams]="[autocompleteInitChips]"
-                             (chip.add)="add($event.detail)" (chip.delete)="delete($event.detail)"
-                             (chip.select)="select($event.detail)" [materializeActions]="chipsActions"></div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input formControlName="description" type="text" id="description" class="validate">
+                            <label for="description">Description *</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="chips" materialize="material_chip" [materializeParams]="[autocompleteInitChips]"
+                                 (chip.add)="add($event.detail)" (chip.delete)="delete($event.detail)"
+                                 (chip.select)="select($event.detail)" [materializeActions]="chipsActions"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -125,8 +95,8 @@
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
-            </ng-template>
-        </form>
-    </div>
+
+            </form>
+        </div>
     </router-outlet>
 </div>
