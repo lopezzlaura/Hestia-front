@@ -19,14 +19,6 @@
       "type": "string",
       "required": true
     },
-    "zoneType": {
-      "type": "string",
-      "required": true
-    },
-    "zoneId": {
-      "type": "string",
-      "required": true
-    },
     "date": {
       "type": "string",
       "required": true
@@ -42,6 +34,16 @@
       "type": "belongsTo",
       "model": "Emergency",
       "foreignKey": "emergencyId"
+    },
+    "connected-object": {
+      "type": "belongsTo",
+      "model": "ConnectedObject",
+      "foreignKey": "connectedObjectId"
+    },
+    "area-rel": {
+      "type": "belongsTo",
+      "model": "Area",
+      "foreignKey": "areaId"
     }
   },
   "acls": [],

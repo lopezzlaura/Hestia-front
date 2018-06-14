@@ -11,16 +11,18 @@ export class ConnectedObjectRequestModel {
     public actionType: string;
     public date: string;
     public heure: string;
-    public zoneType: string;
+    public areaId: number;
+    public connectedObjectId: number;
     public zoneId: string;
 
-    constructor(title: string, description: string, emergencyId: number, actionType: string, zoneType: string, zoneId: string, date: string, heure: string, id?: number) {
+    constructor(title: string, description: string, emergencyId: number, actionType: string, connectedObjectId: number, areaId: number, zoneId: string, date: string, heure: string, id?: number) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.emergencyId = emergencyId;
         this.actionType = actionType;
-        this.zoneType = zoneType;
+        this.areaId = areaId;
+        this.connectedObjectId = connectedObjectId;
         this.zoneId = zoneId;
         this.date = date;
         this.heure = heure;
