@@ -9,12 +9,23 @@ import {AreaService} from "./area.service";
 import {ConnectedObjectService} from "./connected_object.service";
 import {forkJoin} from "rxjs/observable/forkJoin";
 import {MqttService} from "angular2-mqtt";
+import {MqttClient} from "ngx-mqtt/src/mqtt-types";
 
 
 @Injectable()
 export class ConnectedObjectRequestService {
 
+    private client: MqttClient;
+
     constructor(private http: HttpClient, private _mqttService: MqttService, private rest: RestService, private areaService: AreaService, private connectedObjectService: ConnectedObjectService) {
+    }
+
+    public connectToMQTTBroker() {
+        console.log('trying to connect');
+        this._mqttService.connect({
+            hostname: "localhost",
+            port: 8080
+        });
     }
 
     public postConnectedObjectIssue(formData: FormData) {
@@ -46,8 +57,8 @@ export class ConnectedObjectRequestService {
                     object: objectValue.name,
                     value: bool
                 };
-                this._mqttService.unsafePublish("/home/" + request.zone + "/Outout/bool/" + request.object, request.value, {qos: 1, retain: true});
-                // this.http.post(NODE_RED_API_URL + "ConnectedObject", request).subscribe(post => console.log(post));
+                this.connectToMQTTBroker();
+
             });
         })
     }

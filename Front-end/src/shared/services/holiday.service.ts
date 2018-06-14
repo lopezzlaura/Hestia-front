@@ -4,12 +4,25 @@ import {HttpClient} from "@angular/common/http";
 import {API_URL} from "./rest/constants";
 import {Observable} from "rxjs/Observable";
 import {HolidayModel} from "../models/HolidayModel";
+import {MqttService} from "angular2-mqtt";
 
 @Injectable()
 export class HolidayService {
 
-    constructor(private http: HttpClient, private rest: RestService) {
+    constructor(private http: HttpClient, private rest: RestService, private _mqttService: MqttService) {
     }
+
+    public activateHolidayMode(formData: FormData) {
+        this._mqttService.connect({
+            hostname: "localhost",
+            port: 8080
+        });
+
+        console.log(formData.get("valueBool"));
+        console.log(formData.get("temperature"));
+        /*this._mqttService.unsafePublish('/hestia/holiday', formData.get("valueBool") + ";" + formData.get("temperature"));*/
+    }
+
 
     public getHolidayMode(): Observable<HolidayModel> {
         return this.http.get<HolidayModel>(API_URL + 'Holidays/1');
