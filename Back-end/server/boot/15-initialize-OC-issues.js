@@ -47,12 +47,11 @@ module.exports = function (app, callback) {
         res();
       });
     }));
+  });!
+  Promise.all(promises)
+    .then(() => {
+      callback();
+    }).catch(err => {
+    callback(err);
   });
-  !
-    Promise.all(promises)
-      .then(() => {
-        callback();
-      }).catch(err => {
-      callback(err);
-    });
 };
