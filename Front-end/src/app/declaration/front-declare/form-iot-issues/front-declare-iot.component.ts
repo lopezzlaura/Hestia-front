@@ -7,6 +7,9 @@ import {AreaService} from "../../../../shared/services/area.service";
 import {AreaModel} from "../../../../shared/models/AreaModel";
 import {ConnectedObjectModel} from "../../../../shared/models/ConnectedObjectModel";
 import {ConnectedObjectService} from "../../../../shared/services/connected_object.service";
+import {ConnectedObjectRequestService} from "../../../../shared/services/connected_object_request.service";
+import {DatePipe} from "@angular/common";
+import {MqttService} from "angular2-mqtt";
 
 @Component({
     selector: "app-front-declare-iot",
@@ -25,7 +28,9 @@ export class FrontDeclareIotComponent implements OnInit {
     dateInit;
     timeInit;
 
-    constructor(private emergencyService: EmergencyService, private formBuilder: FormBuilder, private areaService: AreaService, private connectedObjectsService: ConnectedObjectService) {
+    constructor(private _mqttService: MqttService, private emergencyService: EmergencyService, private formBuilder: FormBuilder, private areaService: AreaService, private connectedObjectsService: ConnectedObjectService,
+                private connectedObjectRequestService: ConnectedObjectRequestService,
+                private datePipe: DatePipe) {
     }
 
     ngOnInit() {
@@ -50,7 +55,7 @@ export class FrontDeclareIotComponent implements OnInit {
                     }
                 );
                 this.formLoaded = Promise.resolve(true);
-                this.valueOfArea = this.declareForm.get("areaCB").value;
+                this.valueOfArea = this.declareForm.get("areasCB").value;
             }
         );
 
@@ -81,5 +86,36 @@ export class FrontDeclareIotComponent implements OnInit {
 
     public onDeclare(): void {
         console.log("YES REUSSI");
+
+        if (this.declareForm.valid) {
+            console.log("c valid");
+            this.connectedObjectRequestService.postConnectedObjectIssue(this.getIssue());
+        }
+        this.declareForm.reset();
+    }
+
+    private getIssue(): FormData {
+        const formData = new FormData();
+
+        formData.append("idEmergency", this.declareForm.get("emergencyCB").value);
+        formData.append("title", this.declareForm.get("title").value);
+        formData.append("description", this.declareForm.get("description").value);
+        formData.append("actionType", this.declareForm.get("actionCB").value == "Allumer" ? "True" : "False");
+        formData.append("zoneId", this.declareForm.get("areasCB").value);
+
+        switch (this.declareForm.get("objectCB").value) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default :
+                formData.append("object", this.declareForm.get("objectCB").value);
+        }
+
+        formData.append("date", this.declareForm.get("date").value == null ? this.datePipe.transform(new Date(), "dd-MM-yyyy").toString() : this.datePipe.transform(new Date(this.declareForm.get("date").value), "dd-MM-yyyy").toString());
+        formData.append("time", this.declareForm.get("time").value != null ? this.declareForm.get("time").value.toString() : null);
+        return formData;
     }
 }

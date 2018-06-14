@@ -41,8 +41,20 @@ import {ConnectedObjectService} from "../shared/services/connected_object.servic
 import {HolidayService} from "../shared/services/holiday.service";
 import {HolidayModeModule} from "./common/index/holidaymode/holiday-mode.module";
 import {AreaService} from "../shared/services/area.service";
+import {ConnectedObjectRequestService} from "../shared/services/connected_object_request.service";
+import {MqttModule, MqttService} from "angular2-mqtt/index";
 import {VisuIotComponent} from './declaration/visu-iot/visu-iot.component';
 import {IssueIotModule} from "./declaration/issue/issue-iot/issue-iot.module";
+
+export const MQTT_SERVICE_OPTIONS = {
+    hostname: 'localhost',
+    port: 9001,
+    path: '/mqtt'
+};
+
+export function mqttServiceFactory() {
+    return new MqttService(MQTT_SERVICE_OPTIONS);
+}
 
 @NgModule({
     declarations: [
@@ -67,7 +79,11 @@ import {IssueIotModule} from "./declaration/issue/issue-iot/issue-iot.module";
         MaterializeModule,
         FrontDeclareModule,
         VisuIncidentsModule,
-        IssueModule
+        IssueModule,
+        MqttModule.forRoot({
+            provide: MqttService,
+            useFactory: mqttServiceFactory
+        })
     ],
     providers: [
         AuthService,
@@ -84,6 +100,7 @@ import {IssueIotModule} from "./declaration/issue/issue-iot/issue-iot.module";
         HistoryService,
         AreaService,
         ConnectedObjectService,
+        ConnectedObjectRequestService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,

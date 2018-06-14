@@ -1,5 +1,5 @@
 'use strict';
 
-module.exports = function(Connectedobjectrequest) {
+module.exports = function (ConnectedObjectRequest) {
 
 };
