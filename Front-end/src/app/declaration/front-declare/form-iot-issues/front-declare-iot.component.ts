@@ -14,7 +14,9 @@ import {AreaService} from "../../../../shared/services/area.service";
 export class FrontDeclareIotComponent implements OnInit {
 
     emergencies: EmergencyModel[];
-    areas: AreaModel[];
+    areasString: string[];
+    valueOfArea: string;
+    areasSpe: string[];
     actionTypes: string[];
     declareForm: FormGroup;
     formLoaded: Promise<boolean>;
@@ -27,21 +29,38 @@ export class FrontDeclareIotComponent implements OnInit {
         const areas = this.areaService.getAreas();
 
         forkJoin(emergencies, areas).subscribe(([emergencyValues, areaValues]) => {
-            this.emergencies = emergencyValues;
-            this.areas = areaValues;
-            this.actionTypes = ["Allumer", "Eteindre"];
-            this.declareForm = this.formBuilder.group({
-                    emergencyCB: [Validators.required],
-                    title: [null, Validators.required],
-                    description: [null, Validators.required],
-                    areaCB: [],
-                    identifierCB: [],
-                    location: [null],
-                    date: [null],
-                    time: [null]
+                this.emergencies = emergencyValues;
+                this.areasString = ["Chambre", "Salon", "Cuisine", "Toilettes", "Salle de bain", "Entrée", "Couloir", "Tous"];
+                this.areasSpe = areaValues.map(areas => areas.name);
+                this.actionTypes = ["Allumer", "Eteindre"];
+                this.declareForm = this.formBuilder.group({
+                        emergencyCB: [Validators.required],
+                        title: [null, Validators.required],
+                        description: [null, Validators.required],
+                        areaCB: [this.areasString, Validators.required],
+                        identifierCB: [this.areasSpe, Validators.required],
+                        location: [null],
+                        date: [null],
+                        time: [null]
+                    }
+                );
+                this.formLoaded = Promise.resolve(true);
+                this.valueOfArea = this.declareForm.get("areaCB").value;
+            }
+        );
+
+    }
+
+    public getAreasFor(areaType: string) {
+        const areasOfType = this.areaService.getAreas();
+        this.areasSpe = [];
+
+        forkJoin(areasOfType).subscribe((area1) => {
+            area1.forEach(area2 => area2.forEach(area => {
+                if (area.type == areaType) {
+                    this.areasSpe.push(area.name);
                 }
-            );
-            this.formLoaded = Promise.resolve(true);
-        });
+            }));
+        })
     }
 }

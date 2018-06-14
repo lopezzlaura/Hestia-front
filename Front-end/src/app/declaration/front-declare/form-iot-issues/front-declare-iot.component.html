@@ -53,21 +53,20 @@
                     <div class="row">
                         <div class="col s12 m6">
                             <label>Type de pièce *</label>
-                            <select formControlName="areaCB" name="selectedOptionType"
-                                    materialize="material_select"
-                                    [materializeSelectOptions]="selectOptionsType">
+                            <select  formControlName="areaCB" name="selectedOptionType"
+                                     (ngModelChange)="getAreasFor(first.value)"
+                                    materialize="material_select" #first>
                                 <option value="" disabled selected>Choisir un type</option>
-                                <option *ngFor="let area of areas" [value]="area.id">{{area.type}}</option>
+                                <option *ngFor="let area of areasString" [value]="area">{{area}}</option>
                             </select>
                         </div>
 
                         <div class="col s12 m6">
                             <label>Pièce particulière *</label>
-                            <select formControlName="identifierCB" name="selectedOptionPriority"
-                                    materialize="material_select"
-                                    [materializeSelectOptions]="selectOptionsPriority">
+                            <select #second formControlName="identifierCB" name="selectedOptionPriority"
+                                    materialize="material_select">
                                 <option value="" disabled selected>Choisir une pièce</option>
-                                <option *ngFor="let areaSpe of areas" [value]="areaSpe.id">{{areaSpe.name}}
+                                <option *ngFor="let areaSpe of areasSpe" [value]="areaSpe">{{areaSpe}}
                                 </option>
                             </select>
                         </div>
