@@ -1,4 +1,5 @@
 <div class="container">
+    <router-outlet>
     <div *ngIf="formLoaded | async" class="row">
 
         <div class="row" id="title">
@@ -127,4 +128,5 @@
             </ng-template>
         </form>
     </div>
+    </router-outlet>
 </div>
