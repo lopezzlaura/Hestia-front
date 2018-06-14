@@ -1,5 +1,6 @@
 {
   "name": "Area",
+  "plural": "Areas",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -8,7 +9,7 @@
   "properties": {
     "type": {
       "type": "string",
-      "required": false
+      "required": true
     },
     "name": {
       "type": "string",
@@ -29,15 +30,13 @@
       "accepts": [
         {
           "arg": "areaType",
-          "type": "string",
-          "required": true
+          "type": "string"
         }
       ],
       "returns": {
         "arg": "area",
-        "type": [
-          "Object"
-        ]
+        "type": "Object",
+        "root": true
       },
       "http": {
         "verb": "get",

@@ -1,31 +1,31 @@
 //<reference path="../../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Component, EventEmitter, OnInit} from "@angular/core";
-import {TypeModel} from "../../../shared/models/TypeModel";
-import {TypeService} from "../../../shared/services/type.service";
-import {EmergencyService} from "../../../shared/services/emergency.service";
-import {EmergencyModel} from "../../../shared/models/EmergencyModel";
-import {IssueService} from "../../../shared/services/issue.service";
+import {TypeModel} from "../../../../shared/models/TypeModel";
+import {TypeService} from "../../../../shared/services/type.service";
+import {EmergencyService} from "../../../../shared/services/emergency.service";
+import {EmergencyModel} from "../../../../shared/models/EmergencyModel";
+import {IssueService} from "../../../../shared/services/issue.service";
 
 import {forkJoin} from "rxjs/observable/forkJoin";
-import {InhabitantService} from "../../../shared/services/inhabitant.service";
-import {InhabitantModel} from "../../../shared/models/InhabitantModel";
+import {InhabitantService} from "../../../../shared/services/inhabitant.service";
+import {InhabitantModel} from "../../../../shared/models/InhabitantModel";
 import {MaterializeAction} from "angular2-materialize";
-import {DialogInhabitantComponent} from "./dialog-inhabitant/dialog-inhabitant.component";
+import {DialogInhabitantComponent} from "../dialog-inhabitant/dialog-inhabitant.component";
 import {MatDialog} from "@angular/material/dialog";
-import {HistoryService} from "../../../shared/services/history.service";
-import {AssignmentService} from "../../../shared/services/assignment.service";
+import {HistoryService} from "../../../../shared/services/history.service";
+import {AssignmentService} from "../../../../shared/services/assignment.service";
 import {DatePipe} from "@angular/common";
-import {AreaModel} from "../../../shared/models/AreaModel";
-import {ConnectedObjectModel} from "../../../shared/models/ConnectedObjectModel";
-import {AreaService} from "../../../shared/services/area.service";
+import {AreaModel} from "../../../../shared/models/AreaModel";
+import {ConnectedObjectModel} from "../../../../shared/models/ConnectedObjectModel";
+import {AreaService} from "../../../../shared/services/area.service";
 
 @Component({
     selector: "app-front-declare",
-    templateUrl: "./front-declare.component.html",
-    styleUrls: ["./front-declare.component.css"]
+    templateUrl: "./front-declare-inhabitant.component.html",
+    styleUrls: ["./front-declare-inhabitant.component.css"]
 })
-export class FrontDeclareComponent implements OnInit {
+export class FrontDeclareInhabitantComponent implements OnInit {
     types: TypeModel[];
     declareForm: FormGroup;
     emergencies: EmergencyModel[];
@@ -35,6 +35,7 @@ export class FrontDeclareComponent implements OnInit {
     assignees: Array<string> = [];
     currentMemberId: number;
     inhabitantsNamesData;
+    isConnectedObject: Promise<boolean>;
     autocompleteInit;
     autocompleteInitChips;
     dateInit;

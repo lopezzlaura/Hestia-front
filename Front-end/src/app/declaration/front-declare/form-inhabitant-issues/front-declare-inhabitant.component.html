@@ -1,4 +1,5 @@
 <div class="container">
+    <router-outlet>
     <div *ngIf="formLoaded | async" class="row">
 
         <div class="row" id="title">
@@ -13,7 +14,7 @@
                         <label>Type d'incident *</label>
                         <select formControlName="typeCB" name="selectedOptionType"
                                 materialize="material_select"
-                                [materializeSelectOptions]="selectOptionsType">
+                                [materializeSelectOptions]="selectOptionsType" (onchange)="changeValue()">
                             <option value="" disabled selected>Choisir le type</option>
                             <option *ngFor="let option of types" [value]="option.id">{{option.name}}</option>
                         </select>
@@ -46,7 +47,7 @@
                 </div>
             </div>
 
-            <div *ngIf="" class="dialog_details">
+            <div *ngIf="isConnectedObject | async; else elseBlock " class="dialog_details">
 
                 <div class="col s6">
                     <div class="row">
@@ -127,4 +128,5 @@
             </ng-template>
         </form>
     </div>
+    </router-outlet>
 </div>

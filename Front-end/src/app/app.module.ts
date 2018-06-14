@@ -40,6 +40,7 @@ import {HistoryService} from "../shared/services/history.service";
 import {ConnectedObjectService} from "../shared/services/connected-object.service";
 import {HolidayService} from "../shared/services/holiday.service";
 import {HolidayModeModule} from "./common/index/holidaymode/holiday-mode.module";
+import {AreaService} from "../shared/services/area.service";
 
 @NgModule({
     declarations: [
@@ -77,6 +78,7 @@ import {HolidayModeModule} from "./common/index/holidaymode/holiday-mode.module"
         InhabitantService,
         EmergencyService,
         HistoryService,
+        AreaService,
         ConnectedObjectService,
         {
             provide: HTTP_INTERCEPTORS,
