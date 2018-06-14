@@ -24,4 +24,20 @@ export class HolidayService {
             console.log(holiday);
         });
     }
+
+    public changeAlarmState(state: boolean): void {
+        let holiday = {
+            id: 1,
+            areDectectorsOn: state
+        };
+        this.http.patch<HolidayModel>(API_URL + 'Holidays', holiday).subscribe();
+    }
+
+    public setTemperature(temp: number): void {
+        let holiday = {
+            id: 1,
+            temperature: temp
+        };
+        this.http.patch<HolidayModel>(API_URL + 'Holidays', holiday).subscribe();
+    }
 }

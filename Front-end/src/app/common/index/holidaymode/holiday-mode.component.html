@@ -10,11 +10,14 @@
                     <div class="collapsible-body">
                         <div class="row">
                             <button class="btn waves-effect waves-light" (click)="changeAlarm()">Alarme</button>
+                            <p>Etat actuel : {{displayAlarm}}</p>
                         </div>
-                        <p>{{displayAlarm}}</p>
-                        <div class="input-field">
-                            <input value="A" id="temperature" type="number" class="validate">
-                            <label for="temperature">Température minimale d'activation du chauffage (en °C)</label>
+                        <div class="row">
+                            <div class="input-field">
+                                <input value="temp" id="temperature" type="number" class="validate">
+                                <label for="temperature">Température minimale d'activation du chauffage (en °C)</label>
+                            </div>
+                            <p>Température actuelle : {{temperature}}</p>
                         </div>
                     </div>
                 </li>

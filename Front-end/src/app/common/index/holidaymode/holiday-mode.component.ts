@@ -21,11 +21,21 @@ export class HolidayModeComponent implements OnInit {
     ngOnInit() {
         this.hs.getHolidayMode().subscribe(value => {
             this.activated = value.isActivated;
+            this.temperature = value.temperature;
+            this.alarm = value.areDectectorsOn;
         });
+        if (this.temperature == undefined) {
+            this.hs.setTemperature(1);
+        }
         if (this.activated) {
             this.display = "Désactiver";
         } else {
             this.display = "Activer";
+        }
+        if (this.alarm) {
+            this.displayAlarm = "Activée";
+        } else {
+            this.displayAlarm = "Désactivée";
         }
     }
 
@@ -39,7 +49,12 @@ export class HolidayModeComponent implements OnInit {
             this.activated = false;
             console.log("Désactivé");
         }
+
         this.hs.changeHolidayState(this.activated);
+        if (this.activated == true) {
+            //TODO get temperature et appeler this.hs.setTemperature(this.temperature);
+            this.hs.changeAlarmState(this.alarm);
+        }
     }
 
     changeAlarm() {
