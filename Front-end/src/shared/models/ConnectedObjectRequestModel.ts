@@ -6,6 +6,10 @@ import {AreaModel} from "./AreaModel";
 import {AreaService} from "../services/area.service";
 import {ConnectedObjectService} from "../services/connected_object.service";
 import {forkJoin} from "rxjs/observable/forkJoin";
+import {EmergencyModel} from "./EmergencyModel";
+import {InhabitantModel} from "./InhabitantModel";
+import {InhabitantService} from "../services/inhabitant.service";
+import {EmergencyService} from "../services/emergency.service";
 
 export class ConnectedObjectRequestModel {
 
@@ -23,9 +27,8 @@ export class ConnectedObjectRequestModel {
     public connectedObject: ConnectedObjectModel;
     public author: InhabitantModel;
     public authorId: number;
-    public connectedObject: ConnectedObjectModel;
 
-    constructor(title: string, description: string, emergencyId: number, actionType: string, connectedObjectId: number, areaId: number, zoneId: string, date: string, heure: string, authorId: number, inhabitantService: InhabitantService, connectedObjectService: ConnectedObjectService,
+    constructor(title: string, description: string, emergencyId: number, actionType: string, connectedObjectId: number, areaId: number, zoneId: string, date: string, time: string, authorId: number, inhabitantService: InhabitantService, connectedObjectService: ConnectedObjectService,
                 emergencyService: EmergencyService, areaService: AreaService, id?: number) {
         const inhabitantRequest = inhabitantService.getMember(authorId);
         const emergencyRequest = emergencyService.getEmergency(emergencyId);
@@ -37,7 +40,7 @@ export class ConnectedObjectRequestModel {
             this.title = title;
             this.connectedObjectId = connectedObjectId;
             this.date = date;
-            this.heure = heure;
+            this.time = time;
             this.actionType = actionType;
             this.authorId = authorId;
             this.description = description;
