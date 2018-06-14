@@ -5,7 +5,7 @@ import {HomePageComponent} from "./common/homepage/app-homepage.component";
 import {CommonPageComponent} from "./common/app-common.component";
 import {AuthGuard} from "./guards/auth-guard";
 import {HomeIndexComponent} from "./common/index";
-import {FrontDeclareComponent} from "./declaration/front-declare/front-declare.component";
+import {FrontDeclareInhabitantComponent} from "./declaration/front-declare/form-inhabitant-issues/front-declare-inhabitant.component";
 import {VisuIncidentsComponent} from "./declaration/visu-incidents/visu-incidents.component";
 import {ProfilComponent} from "./common/profil/profil.component";
 
@@ -16,7 +16,7 @@ const routes: Routes = [
         path: "home", component: CommonPageComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
         children: [
             {path: "welcome", component: HomeIndexComponent},
-            {path: "declare", component: FrontDeclareComponent},
+            {path: "declare", component: FrontDeclareInhabitantComponent},
             {path: "visuIncidents", component: VisuIncidentsComponent},
             {path: "profil", component: ProfilComponent}
         ]

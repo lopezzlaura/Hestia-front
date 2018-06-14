@@ -38,6 +38,7 @@ import {RankingService} from "../shared/services/ranking.service";
 import {AssignmentService} from "../shared/services/assignment.service";
 import {HistoryService} from "../shared/services/history.service";
 import {ConnectedObjectService} from "../shared/services/connected_object.service";
+import {AreaService} from "../shared/services/area.service";
 
 @NgModule({
     declarations: [
@@ -73,6 +74,7 @@ import {ConnectedObjectService} from "../shared/services/connected_object.servic
         InhabitantService,
         EmergencyService,
         HistoryService,
+        AreaService,
         ConnectedObjectService,
         {
             provide: HTTP_INTERCEPTORS,
