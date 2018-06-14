@@ -48,8 +48,8 @@ import {IssueIotModule} from "./declaration/issue/issue-iot/issue-iot.module";
 
 export const MQTT_SERVICE_OPTIONS = {
     hostname: 'localhost',
-    port: 9001,
-    path: '/mqtt'
+    port: 4200,
+    path: ''
 };
 
 export function mqttServiceFactory() {
