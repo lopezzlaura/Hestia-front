@@ -7,7 +7,6 @@ import {Observable} from "rxjs/Observable";
 import {StateService} from "./state.service";
 import {TypeService} from "./type.service";
 import {InhabitantService} from "./inhabitant.service";
-import {InhabitantModel} from "../models/InhabitantModel";
 import {forkJoin} from "rxjs/observable/forkJoin";
 import {EmergencyService} from "./emergency.service";
 

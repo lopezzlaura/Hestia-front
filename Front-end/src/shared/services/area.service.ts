@@ -6,7 +6,6 @@ import 'rxjs/add/operator/catch';
 import {Observable} from 'rxjs/Observable';
 import {AreaModel} from "../models/AreaModel";
 
-
 @Injectable()
 export class AreaService {
 
@@ -23,10 +22,11 @@ export class AreaService {
         }));
     }
 
-    public getAreasOfType(type: string): Observable<AreaModel[]> {
-        this.areaList$ = this.http.get<AreaModel[]>(API_URL + 'Areas');
-        return this.http.get<AreaModel[]>(API_URL + 'Areas').map(models => models.map(model => {
-            return new AreaModel(model.id, model.type, model.name);
+    public getAreasOfType(type: string): any {
+        this.http.get<AreaModel[]>(API_URL + 'Areas').map(models => models.map(model => {
+            if (model.type == type) {
+                return new AreaModel(model.id, model.type, model.name)
+            }
         }));
     }
 
