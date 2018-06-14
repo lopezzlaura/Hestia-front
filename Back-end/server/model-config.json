@@ -85,5 +85,9 @@
   "Holiday": {
     "dataSource": "hestiadb",
     "public": true
+  },
+  "ConnectedObjectRequest": {
+    "dataSource": "hestiadb",
+    "public": true
   }
 }

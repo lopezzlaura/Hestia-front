@@ -1,0 +1,49 @@
+{
+  "name": "ConnectedObjectRequest",
+  "plural": "ConnectedObjectRequests",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "actionType": {
+      "type": "string",
+      "required": true
+    },
+    "zoneType": {
+      "type": "string",
+      "required": true
+    },
+    "zoneId": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "string",
+      "required": true
+    },
+    "time": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "emergency": {
+      "type": "belongsTo",
+      "model": "Emergency",
+      "foreignKey": "emergencyId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
