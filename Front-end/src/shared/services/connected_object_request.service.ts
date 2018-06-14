@@ -8,12 +8,13 @@ import {ConnectedObjectRequestModel} from "../models/ConnectedObjectRequestModel
 import {AreaService} from "./area.service";
 import {ConnectedObjectService} from "./connected_object.service";
 import {forkJoin} from "rxjs/observable/forkJoin";
+import {MqttService} from "angular2-mqtt";
 
 
 @Injectable()
 export class ConnectedObjectRequestService {
 
-    constructor(private http: HttpClient, private rest: RestService, private areaService: AreaService, private connectedObjectService: ConnectedObjectService) {
+    constructor(private http: HttpClient, private _mqttService: MqttService, private rest: RestService, private areaService: AreaService, private connectedObjectService: ConnectedObjectService) {
     }
 
     public postIssue(formData: FormData) {
@@ -28,7 +29,7 @@ export class ConnectedObjectRequestService {
             date: formData.get("date"),
             time: formData.get("time")
         };
-
+/*
         this.http.post<ConnectedObjectRequestModel>(API_URL + 'ConnectedObjectRequests', issue).subscribe(object => {
 
             const areaRequest = this.areaService.getArea(object.areaId);
@@ -45,8 +46,9 @@ export class ConnectedObjectRequestService {
                     object: objectValue.name,
                     value: bool
                 };
-                this.http.post(NODE_RED_API_URL + "ConnectedObject", request).subscribe(post => console.log(post));
+                this._mqttService.unsafePublish("/home/" + request.zone + "/Outout/bool/" + request.object, request.value, {qos: 1, retain: true});
+                // this.http.post(NODE_RED_API_URL + "ConnectedObject", request).subscribe(post => console.log(post));
             });
-        })
+        })*/
     }
 }

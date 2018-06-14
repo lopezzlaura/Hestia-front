@@ -25,6 +25,7 @@
     "@angular/router": "^5.2.10",
     "angular-font-awesome": "^3.1.2",
     "angular2-materialize": "^15.1.10",
+    "angular2-mqtt": "^1.7.2",
     "core-js": "^2.5.5",
     "font-awesome": "^4.7.0",
     "generate-password": "^1.4.0",
