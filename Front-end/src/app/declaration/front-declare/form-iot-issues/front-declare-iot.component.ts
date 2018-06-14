@@ -9,6 +9,7 @@ import {ConnectedObjectModel} from "../../../../shared/models/ConnectedObjectMod
 import {ConnectedObjectService} from "../../../../shared/services/connected_object.service";
 import {ConnectedObjectRequestService} from "../../../../shared/services/connected_object_request.service";
 import {DatePipe} from "@angular/common";
+import {MqttService} from "angular2-mqtt";
 
 @Component({
     selector: "app-front-declare-iot",
@@ -27,7 +28,7 @@ export class FrontDeclareIotComponent implements OnInit {
     dateInit;
     timeInit;
 
-    constructor(private emergencyService: EmergencyService, private formBuilder: FormBuilder, private areaService: AreaService, private connectedObjectsService: ConnectedObjectService,
+    constructor(private _mqttService: MqttService, private emergencyService: EmergencyService, private formBuilder: FormBuilder, private areaService: AreaService, private connectedObjectsService: ConnectedObjectService,
                 private connectedObjectRequestService: ConnectedObjectRequestService,
                 private datePipe: DatePipe) {
     }
@@ -88,7 +89,7 @@ export class FrontDeclareIotComponent implements OnInit {
 
         if (this.declareForm.valid) {
             console.log("c valid");
-            this.connectedObjectRequestService.postIssue(this.getIssue());
+            this.connectedObjectRequestService.postConnectedObjectIssue(this.getIssue());
         }
         this.declareForm.reset();
     }

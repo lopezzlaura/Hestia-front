@@ -42,6 +42,22 @@ import {HolidayService} from "../shared/services/holiday.service";
 import {HolidayModeModule} from "./common/index/holidaymode/holiday-mode.module";
 import {AreaService} from "../shared/services/area.service";
 import {ConnectedObjectRequestService} from "../shared/services/connected_object_request.service";
+import {
+    MqttMessage,
+    MqttModule,
+    MqttService
+} from 'angular2-mqtt';
+
+export const MQTT_SERVICE_OPTIONS = {
+    hostname: 'localhost',
+    port: 9001,
+    path: '/mqtt'
+};
+
+export function mqttServiceFactory() {
+    return new MqttService(MQTT_SERVICE_OPTIONS);
+}
+
 
 @NgModule({
     declarations: [
@@ -64,7 +80,11 @@ import {ConnectedObjectRequestService} from "../shared/services/connected_object
         MaterializeModule,
         FrontDeclareModule,
         VisuIncidentsModule,
-        IssueModule
+        IssueModule,
+        MqttModule.forRoot({
+            provide: MqttService,
+            useFactory: mqttServiceFactory
+        })
     ],
     providers: [
         AuthService,

@@ -17,7 +17,7 @@ export class ConnectedObjectRequestService {
     constructor(private http: HttpClient, private _mqttService: MqttService, private rest: RestService, private areaService: AreaService, private connectedObjectService: ConnectedObjectService) {
     }
 
-    public postIssue(formData: FormData) {
+    public postConnectedObjectIssue(formData: FormData) {
 
         let issue = {
             title: formData.get("title"),
@@ -29,7 +29,7 @@ export class ConnectedObjectRequestService {
             date: formData.get("date"),
             time: formData.get("time")
         };
-/*
+
         this.http.post<ConnectedObjectRequestModel>(API_URL + 'ConnectedObjectRequests', issue).subscribe(object => {
 
             const areaRequest = this.areaService.getArea(object.areaId);
@@ -49,6 +49,6 @@ export class ConnectedObjectRequestService {
                 this._mqttService.unsafePublish("/home/" + request.zone + "/Outout/bool/" + request.object, request.value, {qos: 1, retain: true});
                 // this.http.post(NODE_RED_API_URL + "ConnectedObject", request).subscribe(post => console.log(post));
             });
-        })*/
+        })
     }
 }

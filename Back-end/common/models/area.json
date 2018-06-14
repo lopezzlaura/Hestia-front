@@ -25,23 +25,5 @@
     }
   },
   "acls": [],
-  "methods": {
-    "getAreaOfType": {
-      "accepts": [
-        {
-          "arg": "areaType",
-          "type": "string"
-        }
-      ],
-      "returns": {
-        "arg": "area",
-        "type": "Object",
-        "root": true
-      },
-      "http": {
-        "verb": "get",
-        "path": "/getAreasOfType"
-      }
-    }
-  }
+  "methods": {}
 }
