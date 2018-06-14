@@ -25,7 +25,7 @@
                     <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="false"></app-issue>
                 </div>
             </div>
-            <div *ngIf="isSelected('declares')">
+            <div *ngIf="isSelected('declares')" class="drag-not" [dragula]='"first-bag"'>
                 <div *ngFor="let issue of (issues | async | incidentTypePipe:this.idUser | statePipe:-1)">
                     <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="true"></app-issue>
                 </div>
@@ -44,7 +44,7 @@
                     <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="false"></app-issue>
                 </div>
             </div>
-            <div *ngIf="isSelected('declares')">
+            <div *ngIf="isSelected('declares')" class="drag-wip" [dragula]='"first-bag"'>
                 <div *ngFor="let issue of (issues | async | incidentTypePipe:this.idUser:false | statePipe:0)">
                     <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="true"></app-issue>
                 </div>
@@ -62,7 +62,7 @@
                     <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="false"></app-issue>
                 </div>
             </div>
-            <div *ngIf="isSelected('declares')">
+            <div *ngIf="isSelected('declares')" class="drag-resolve" [dragula]='"first-bag"'>
                 <div *ngFor="let issue of (issues | async | incidentTypePipe:this.idUser:false | statePipe:1)">
                     <app-issue [issueElement]="issue" [attr.id]="'drag-' + issue.id" [canEdit]="true"></app-issue>
                 </div>
