@@ -3,8 +3,10 @@ import {EmergencyModel} from "../../../../shared/models/EmergencyModel";
 import {EmergencyService} from "../../../../shared/services/emergency.service";
 import {forkJoin} from "rxjs/observable/forkJoin";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AreaModel} from "../../../../shared/models/AreaModel";
 import {AreaService} from "../../../../shared/services/area.service";
+import {AreaModel} from "../../../../shared/models/AreaModel";
+import {ConnectedObjectModel} from "../../../../shared/models/ConnectedObjectModel";
+import {ConnectedObjectService} from "../../../../shared/services/connected_object.service";
 
 @Component({
     selector: "app-front-declare-iot",
@@ -14,34 +16,37 @@ import {AreaService} from "../../../../shared/services/area.service";
 export class FrontDeclareIotComponent implements OnInit {
 
     emergencies: EmergencyModel[];
-    areasString: string[];
+    areas: AreaModel[];
+    connectedObjects: ConnectedObjectModel[];
     valueOfArea: string;
-    areasSpe: string[];
     actionTypes: string[];
     declareForm: FormGroup;
     formLoaded: Promise<boolean>;
+    dateInit;
+    timeInit;
 
-    constructor(private emergencyService: EmergencyService, private formBuilder: FormBuilder, private areaService: AreaService) {
+    constructor(private emergencyService: EmergencyService, private formBuilder: FormBuilder, private areaService: AreaService, private connectedObjectsService: ConnectedObjectService) {
     }
 
     ngOnInit() {
         const emergencies = this.emergencyService.getEmergencies();
         const areas = this.areaService.getAreas();
+        const connectedObjects = this.connectedObjectsService.getConnectedObjects();
 
-        forkJoin(emergencies, areas).subscribe(([emergencyValues, areaValues]) => {
+        forkJoin(emergencies, areas, connectedObjects).subscribe(([emergencyValues, areaValues, coObjectValues]) => {
                 this.emergencies = emergencyValues;
-                this.areasString = ["Chambre", "Salon", "Cuisine", "Toilettes", "Salle de bain", "Entrée", "Couloir", "Tous"];
-                this.areasSpe = areaValues.map(areas => areas.name);
+                this.areas = areaValues;
+                this.connectedObjects = coObjectValues;
                 this.actionTypes = ["Allumer", "Eteindre"];
                 this.declareForm = this.formBuilder.group({
                         emergencyCB: [Validators.required],
                         title: [null, Validators.required],
                         description: [null, Validators.required],
-                        areaCB: [this.areasString, Validators.required],
-                        identifierCB: [this.areasSpe, Validators.required],
-                        location: [null],
-                        date: [null],
-                        time: [null]
+                        actionCB: [Validators.required],
+                        areasCB: [Validators.required],
+                        objectCB: [Validators.required],
+                        date: [],
+                        time: []
                     }
                 );
                 this.formLoaded = Promise.resolve(true);
@@ -49,18 +54,32 @@ export class FrontDeclareIotComponent implements OnInit {
             }
         );
 
+        this.dateInit = [{
+            selectMonths: true,
+            selectYears: 15,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false,
+            container: undefined,
+        }];
+
+        this.timeInit = [{
+            default: 'now',
+            fromnow: 0,
+            twelvehour: false,
+            donetext: 'OK',
+            cleartext: 'Clear',
+            canceltext: 'Cancel',
+            container: undefined,
+            autoclose: false,
+            ampmclickable: true,
+            aftershow: function () {
+            }
+        }];
     }
 
-    public getAreasFor(areaType: string) {
-        const areasOfType = this.areaService.getAreas();
-        this.areasSpe = [];
-
-        forkJoin(areasOfType).subscribe((area1) => {
-            area1.forEach(area2 => area2.forEach(area => {
-                if (area.type == areaType) {
-                    this.areasSpe.push(area.name);
-                }
-            }));
-        })
+    public onDeclare(): void {
+        console.log("YES REUSSI");
     }
 }
