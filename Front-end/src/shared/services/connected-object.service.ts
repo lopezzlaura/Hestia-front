@@ -1,11 +1,20 @@
 import {HttpClient} from "@angular/common/http";
 import {RestService} from "./rest/rest.service";
 import {API_URL} from "./rest/constants";
-import {ConnectedObjectModel} from "../models/ConnectedObjectModelForRequest";
+import {ConnectedObjectModel} from "../models/ConnectedObjectModel";
+import {Observable} from "rxjs/Observable";
 
 
-export class ConnectedObjectService {
-    constructor(private http: HttpClient, private rest: RestService) {
+export class ConnectedObjectService {}
+   /* constructor(private http: HttpClient) {
+    }
+
+    public getConnectedObjects(): Observable<ConnectedObjectModel[]> {
+        return this.http.get<ConnectedObjectModel[]>(API_URL + 'ConnectedObjects');
+    }
+
+    public getConnectedObject(id: number): Observable<ConnectedObjectModel> {
+        return this.http.get<ConnectedObjectModel>(API_URL + 'ConnectedObjects/' + id);
     }
 
     public postRequest(on: boolean, area: string, object: string): void {
@@ -14,6 +23,6 @@ export class ConnectedObjectService {
             zone: area,
             object: object,
         };
-        this.http.post<ConnectedObjectModel>(API_URL + "connectedObjects/", request);
+        this.http.post<ConnectedObjectModel>(API_URL + "ConnectedObjects/", request);
     }
-}
+}*/

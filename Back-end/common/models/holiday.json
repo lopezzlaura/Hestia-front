@@ -14,6 +14,14 @@
     },
     "temperature": {
       "type": "number"
+    },
+    "areDectectorsOn": {
+      "type": "boolean",
+      "required": true
+    },
+    "areLightsRandom": {
+      "type": "boolean",
+      "required": true
     }
   },
   "validations": [],

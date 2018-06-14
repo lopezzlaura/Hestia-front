@@ -12,25 +12,15 @@ export class HolidayService {
     }
 
     public getHolidayMode(): Observable<HolidayModel> {
-        return this.http.get<HolidayModel>(API_URL + 'holidays/0');
+        return this.http.get<HolidayModel>(API_URL + 'Holidays/1');
     }
 
     public changeHolidayState(state: boolean): void {
         let holiday = {
-            id: 0,
-            isActivated: state,
+            id: 1,
+            isActivated: state
         };
-        this.http.put<HolidayModel>(API_URL + 'holidays', holiday).subscribe(holiday => {
-            console.log(holiday);
-        });
-    }
-
-    public changeMinTemp(temp: number) {
-        let holiday = {
-            id: 0,
-            temperature: temp,
-        };
-        this.http.put<HolidayModel>(API_URL + 'holidays', holiday).subscribe(holiday => {
+        this.http.patch<HolidayModel>(API_URL + 'Holidays', holiday).subscribe(holiday => {
             console.log(holiday);
         });
     }

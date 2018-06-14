@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from "@angular/http";
 import {HolidayService} from "../../../../shared/services/holiday.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
     selector: 'app-holidaymode',
@@ -9,13 +10,19 @@ import {HolidayService} from "../../../../shared/services/holiday.service";
 })
 export class HolidayModeComponent implements OnInit {
     display: string;
-    static actived: boolean = false;
+    displayAlarm: string;
+    activated: boolean;
+    temperature: number;
+    alarm: boolean;
 
     constructor(private hs: HolidayService) {
     }
 
     ngOnInit() {
-        if (this.hs.getHolidayMode().subscribe(value => {return value.isActivated;})) {
+        this.hs.getHolidayMode().subscribe(value => {
+            this.activated = value.isActivated;
+        });
+        if (this.activated) {
             this.display = "Désactiver";
         } else {
             this.display = "Activer";
@@ -23,15 +30,25 @@ export class HolidayModeComponent implements OnInit {
     }
 
     onClick() {
-        if (!HolidayModeComponent.actived) {
-            HolidayModeComponent.actived = true;
+        if (!this.activated) {
             this.display = "Désactiver";
+            this.activated = true;
             console.log("Activé")
         } else {
-            HolidayModeComponent.actived = false;
             this.display = "Activer";
+            this.activated = false;
             console.log("Désactivé");
         }
+        this.hs.changeHolidayState(this.activated);
     }
 
+    changeAlarm() {
+        if (this.alarm) {
+            this.alarm = false;
+            this.displayAlarm = "Désactivée"
+        } else {
+            this.alarm = true;
+            this.displayAlarm = "Activée"
+        }
+    }
 }

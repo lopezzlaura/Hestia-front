@@ -37,7 +37,9 @@ import {RankingModule} from "./common/index/ranking/ranking.module";
 import {RankingService} from "../shared/services/ranking.service";
 import {AssignmentService} from "../shared/services/assignment.service";
 import {HistoryService} from "../shared/services/history.service";
-import {ConnectedObjectService} from "../shared/services/connected_object.service";
+import {ConnectedObjectService} from "../shared/services/connected-object.service";
+import {HolidayService} from "../shared/services/holiday.service";
+import {HolidayModeModule} from "./common/index/holidaymode/holiday-mode.module";
 
 @NgModule({
     declarations: [
@@ -53,6 +55,7 @@ import {ConnectedObjectService} from "../shared/services/connected_object.servic
         ManageMemberModule,
         WeatherModule,
         RankingModule,
+        HolidayModeModule,
         FormsModule,
         AdminModule,
         CommonPageModule,
@@ -68,6 +71,7 @@ import {ConnectedObjectService} from "../shared/services/connected_object.servic
         RestService,
         IssueService,
         StateService,
+        HolidayService,
         RankingService,
         TypeService,
         InhabitantService,

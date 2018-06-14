@@ -17,7 +17,7 @@ import {HistoryService} from "../../../shared/services/history.service";
 import {AssignmentService} from "../../../shared/services/assignment.service";
 import {DatePipe} from "@angular/common";
 import {AreaModel} from "../../../shared/models/AreaModel";
-import {ConnectedObjectModel} from "../../../shared/models/ConnectedObjectModelForRequest";
+import {ConnectedObjectModel} from "../../../shared/models/ConnectedObjectModel";
 import {AreaService} from "../../../shared/services/area.service";
 
 @Component({

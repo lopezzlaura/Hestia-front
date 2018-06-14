@@ -2,8 +2,23 @@
     <div class="card horizontal">
         <div class="card-stacked">
             <div class="card-content">
-                <p>Activer ou désactiver le mode Vacances.</p>
+                <p>Mode vacances</p>
             </div>
+            <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">build</i>Paramètres du mode vacances</div>
+                    <div class="collapsible-body">
+                        <div class="row">
+                            <button class="btn waves-effect waves-light" (click)="changeAlarm()">Alarme</button>
+                        </div>
+                        <p>{{displayAlarm}}</p>
+                        <div class="input-field">
+                            <input value="A" id="temperature" type="number" class="validate">
+                            <label for="temperature">Température minimale d'activation du chauffage (en °C)</label>
+                        </div>
+                    </div>
+                </li>
+            </ul>
             <div class="card-action">
                 <button class="btn waves-effect waves-light" (click)="onClick()"
                         name="action">
@@ -11,7 +26,6 @@
                     <i *ngIf="display=='Désactiver'" class="material-icons right logo">highlight_off</i>
                     <i *ngIf="display=='Activer'" class="material-icons right logo">check_circle_outline</i>
                 </button>
-
             </div>
         </div>
     </div>

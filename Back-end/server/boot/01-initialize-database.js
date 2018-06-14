@@ -7,7 +7,7 @@ module.exports = (app, callback) => {
 
     // Add all the models created with this datasource
     for (let modelName in app.models) {
-        if (app.models[modelName].dataSource.name === hestiadb.adapter.name) {
+        if (app.models[modelName].dataSource.name === hestiadb.name) {
             tables.push(modelName);
         }
     }

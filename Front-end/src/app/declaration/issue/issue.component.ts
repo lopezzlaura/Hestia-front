@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from "@angular/core";
 import {IssueModel} from '../../../shared/models/IssueModel';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogOverviewComponent} from "./dialog-overview-issues/dialog-overview.component";
-import {ConnectedObjectService} from "../../../shared/services/connected_object.service";
 
 @Component({
     selector: 'app-issue',
@@ -24,13 +23,13 @@ export class IssueComponent implements OnInit {
         const dialogRef = this.dialog.open(DialogOverviewComponent, {
             width: '550px',
             data: {
-                id : this.issueElement.id,
+                id: this.issueElement.id,
                 title: this.issueElement.title,
                 image: this.issueElement.getImg(),
                 description: this.issueElement.description,
                 emergency: this.issueElement.emergency,
                 lieu: this.issueElement.location,
-                thirdParty: this.issueElement.thirdParty?this.issueElement.thirdParty.firstname + " " + this.issueElement.thirdParty.lastname:"Aucune personne désignée",
+                thirdParty: this.issueElement.thirdParty ? this.issueElement.thirdParty.firstname + " " + this.issueElement.thirdParty.lastname : "Aucune personne désignée",
                 type: this.issueElement.type.name,
                 state: this.issueElement.state.name,
                 date: this.issueElement.date,

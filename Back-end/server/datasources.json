@@ -9,7 +9,7 @@
     "url": "",
     "database": "hestiadb",
     "password": "TT829",
-    "name": "postgres",
+    "name": "hestiadb",
     "user": "hestia",
     "connector": "postgresql"
   },
