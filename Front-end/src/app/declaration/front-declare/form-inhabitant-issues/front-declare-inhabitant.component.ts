@@ -194,12 +194,4 @@ export class FrontDeclareInhabitantComponent implements OnInit {
         formData.append("time", this.declareForm.get("time").value != null ? this.declareForm.get("time").value.toString() : null);
         return formData;
     }
-
-    public changeValue() {
-        if (this.declareForm.get("typeCB").value) {
-            this.isConnectedObject = Promise.resolve(true);
-        } else {
-            this.isConnectedObject = Promise.resolve(false);
-        }
-    }
 }

@@ -8,12 +8,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
 import {DialogInhabitantComponent} from "./dialog-inhabitant/dialog-inhabitant.component";
+import {IndexDeclarationComponent} from "./index-declaration/index-declaration.component";
+import {FrontDeclareIotComponent} from "./form-iot-issues/front-declare-iot.component";
 
 
 @NgModule({
   imports: [MaterializeModule, CommonModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, MatButtonModule, MatDialogModule],
-  exports: [FrontDeclareInhabitantComponent],
-  declarations: [FrontDeclareInhabitantComponent, DialogInhabitantComponent],
+  exports: [IndexDeclarationComponent],
+  declarations: [FrontDeclareInhabitantComponent, IndexDeclarationComponent, DialogInhabitantComponent, FrontDeclareIotComponent],
   providers: [DatePipe],
   entryComponents: [DialogInhabitantComponent]
 })
