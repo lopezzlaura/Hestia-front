@@ -40,7 +40,7 @@ export class DialogOverviewIotComponent implements OnInit {
 
     constructor(
         public dialogRef: MatDialogRef<DialogOverviewIotComponent>,
-        @Inject(MAT_DIALOG_DATA)) {
+        @Inject(MAT_DIALOG_DATA) public data: any) {
     }
 
     ngOnInit() {
