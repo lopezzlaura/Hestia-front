@@ -81,5 +81,9 @@
   "area": {
     "dataSource": "db",
     "public": true
+  },
+  "holiday": {
+    "dataSource": "postgres",
+    "public": true
   }
 }

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Http} from "@angular/http";
+import {HolidayService} from "../../../../shared/services/holiday.service";
 
 @Component({
     selector: 'app-holidaymode',
@@ -10,11 +11,11 @@ export class HolidayModeComponent implements OnInit {
     display: string;
     static actived: boolean = false;
 
-    constructor(private http: Http) {
+    constructor(private hs: HolidayService) {
     }
 
     ngOnInit() {
-        if (!HolidayModeComponent.actived) {
+        if (this.hs.getHolidayMode().subscribe(value => {return value.isActivated;})) {
             this.display = "Désactiver";
         } else {
             this.display = "Activer";

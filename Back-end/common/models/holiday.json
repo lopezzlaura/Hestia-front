@@ -1,0 +1,23 @@
+{
+  "name": "holiday",
+  "plural": "holidays",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "isActivated": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "temperature": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
