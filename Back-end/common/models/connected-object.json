@@ -17,7 +17,7 @@
     "objects_rel": {
       "type": "belongsTo",
       "model": "Area",
-      "foreignKey": "area-id"
+      "foreignKey": "areaId"
     }
   },
   "acls": [],
