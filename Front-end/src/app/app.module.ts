@@ -41,10 +41,13 @@ import {ConnectedObjectService} from "../shared/services/connected_object.servic
 import {HolidayService} from "../shared/services/holiday.service";
 import {HolidayModeModule} from "./common/index/holidaymode/holiday-mode.module";
 import {AreaService} from "../shared/services/area.service";
+import {VisuIotComponent} from './declaration/visu-iot/visu-iot.component';
+import {IssueIotModule} from "./declaration/issue/issue-iot/issue-iot.module";
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        VisuIotComponent
     ],
     imports: [
         BrowserModule,
@@ -54,6 +57,7 @@ import {AreaService} from "../shared/services/area.service";
         HomePageModule,
         HomeIndexModule,
         ManageMemberModule,
+        IssueIotModule,
         WeatherModule,
         RankingModule,
         HolidayModeModule,

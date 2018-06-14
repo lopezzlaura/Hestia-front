@@ -8,6 +8,7 @@ import {HomeIndexComponent} from "./common/index";
 import {VisuIncidentsComponent} from "./declaration/visu-incidents/visu-incidents.component";
 import {ProfilComponent} from "./common/profil/profil.component";
 import {IndexDeclarationComponent} from "./declaration/front-declare/index-declaration/index-declaration.component";
+import {VisuIotComponent} from "./declaration/visu-iot/visu-iot.component";
 
 const routes: Routes = [
     {path: "", redirectTo: "index", pathMatch: "full"},
@@ -18,6 +19,7 @@ const routes: Routes = [
             {path: "welcome", component: HomeIndexComponent},
             {path: "declare", component: IndexDeclarationComponent},
             {path: "visuIncidents", component: VisuIncidentsComponent},
+            {path: "visuIOT", component: VisuIotComponent},
             {path: "profil", component: ProfilComponent}
         ]
     }

@@ -11,7 +11,7 @@ import {IssueIotComponent} from './issue-iot.component';
 @NgModule({
     declarations: [DialogOverviewIotComponent, IssueIotComponent],
     imports: [CommonModule, MatDialogModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, MaterializeModule, MatButtonModule],
-    exports: [],
+    exports: [IssueIotComponent],
     providers: [],
     entryComponents: []
 })
