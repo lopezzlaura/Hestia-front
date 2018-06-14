@@ -1,26 +1,19 @@
 'use strict';
 
 module.exports = function (app, callback) {
-  const histories = [
+  const areas = [
+
     {
-      "name": "Chambre 1",
-      "identifier": "H"
+      "name": "Salon",
+      "identifier": "A"
     },
     {
-      "name": "Chambre 2",
-      "identifier": "J"
+      "name": "Toilettes",
+      "identifier": "B"
     },
     {
-      "name": " Chambre 3",
-      "identifier": "L"
-    },
-    {
-      "name": "Buanderie",
-      "identifier": "M"
-    },
-    {
-      "name": "Couloir",
-      "identifier": "G"
+      "name": "Placard",
+      "identifier": "C"
     },
     {
       "name": "Cuisine",
@@ -31,45 +24,54 @@ module.exports = function (app, callback) {
       "identifier": "E"
     },
     {
-      "name": "Extérieur",
-      "identifier": "O"
-    }, {
       "name": "Garage",
       "identifier": "F"
-    }, {
-      "name": "Placard",
-      "identifier": "C"
     },
     {
-      "name": "Salle de bain",
-      "identifier": "K"
+      "name": "Couloir",
+      "identifier": "G"
+    },
+    {
+      "name": "Chambre 1",
+      "identifier": "H"
     },
     {
       "name": "Salle de bain",
       "identifier": "I"
     },
     {
-      "name": "Salon",
-      "identifier": "A"
+      "name": "Chambre 2",
+      "identifier": "J"
     },
     {
-      "name": "Toilettes",
-      "identifier": "B"
+      "name": "Salle de bain",
+      "identifier": "K"
     },
+    {
+      "name": " Chambre 3",
+      "identifier": "L"
+    },
+    {
+      "name": "Buanderie",
+      "identifier": "M"
+    },
+    {
+      "name": "Extérieur",
+      "identifier": "O"
+    }
   ];
 
-  const History = app.models.History;
+  const Area = app.models.Area;
   let promises = [];
 
-  histories.forEach(history => {
+  areas.forEach(area => {
     promises.push(new Promise((res, rej) => {
-      History.findOrCreate({
+      Area.findOrCreate({
         where: {
-          origin: history.origin,
-          memberId: history.memberId,
-          issueId: history.issueId
+          name: area.name,
+          identifier: area.identifier
         },
-      }, history, (err, newHistory) => {
+      }, area, (err, newArea) => {
         if (err) {
           rej(err);
         }
