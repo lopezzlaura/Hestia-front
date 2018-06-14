@@ -40,50 +40,50 @@
     "dataSource": "emailManager"
   },
   "Member": {
-    "dataSource": "postgres",
+    "dataSource": "hestiadb",
     "public": true,
     "options": {
       "emailVerificationRequired": true
     }
   },
   "Issue": {
-    "dataSource": "postgres",
+    "dataSource": "hestiadb",
     "public": true
   },
   "Type": {
-    "dataSource": "postgres",
+    "dataSource": "hestiadb",
     "public": true
   },
   "Emergency": {
-    "dataSource": "postgres",
+    "dataSource": "hestiadb",
     "public": true
   },
   "State": {
-    "dataSource": "postgres",
+    "dataSource": "hestiadb",
     "public": true
   },
   "Ranking": {
-    "dataSource": "postgres",
+    "dataSource": "hestiadb",
     "public": true
   },
   "History": {
-    "dataSource": "postgres",
+    "dataSource": "hestiadb",
     "public": true
   },
   "Assignment": {
-    "dataSource": "postgres",
+    "dataSource": "hestiadb",
     "public": true
   },
-  "connectedObject": {
-    "dataSource": "db",
+  "ConnectedObject": {
+    "dataSource": "hestiadb",
     "public": true
   },
   "Area": {
-    "dataSource": "db",
+    "dataSource": "hestiadb",
     "public": true
   },
-  "holiday": {
-    "dataSource": "postgres",
+  "Holiday": {
+    "dataSource": "hestiadb",
     "public": true
   }
 }

@@ -3,7 +3,7 @@
     "name": "db",
     "connector": "memory"
   },
-  "postgres": {
+  "hestiadb": {
     "host": "localhost",
     "port": 5432,
     "url": "",

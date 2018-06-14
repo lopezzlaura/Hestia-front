@@ -6,6 +6,10 @@
     "validateUpsert": true
   },
   "properties": {
+    "type": {
+      "type": "string",
+      "required": false
+    },
     "name": {
       "type": "string",
       "required": true
@@ -20,5 +24,25 @@
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "getAreaOfType": {
+      "accepts": [
+        {
+          "arg": "areaType",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "returns": {
+        "arg": "area",
+        "type": [
+          "Object"
+        ]
+      },
+      "http": {
+        "verb": "get",
+        "path": "/getAreasOfType"
+      }
+    }
+  }
 }

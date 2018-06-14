@@ -1,5 +1,5 @@
 {
-  "name": "connectedObject",
+  "name": "ConnectedObject",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {

@@ -46,17 +46,17 @@
                 </div>
             </div>
 
-            <div *ngIf="typeCB?.value == 6 | async; else elseBlock" class="dialog_details">
+            <div *ngIf="" class="dialog_details">
 
                 <div class="col s6">
                     <div class="row">
                         <div class="col s12 m6">
                             <label>Type d'incident *</label>
-                            <select formControlName="zoneCB" name="selectedOptionType"
+                            <select formControlName="areaCB" name="selectedOptionType"
                                     materialize="material_select"
                                     [materializeSelectOptions]="selectOptionsType">
                                 <option value="" disabled selected>Choisir la pièce</option>
-                                <option *ngFor="let option of types" [value]="option.id">{{option.name}}</option>
+                                <option *ngFor="let option of areas" [value]="option.id">{{option.type}}</option>
                             </select>
                         </div>
 

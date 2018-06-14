@@ -18,6 +18,7 @@ import {AssignmentService} from "../../../shared/services/assignment.service";
 import {DatePipe} from "@angular/common";
 import {AreaModel} from "../../../shared/models/AreaModel";
 import {ConnectedObjectModel} from "../../../shared/models/ConnectedObjectModelForRequest";
+import {AreaService} from "../../../shared/services/area.service";
 
 @Component({
     selector: "app-front-declare",
@@ -46,7 +47,8 @@ export class FrontDeclareComponent implements OnInit {
 
     constructor(private typeService: TypeService, private emergencyService: EmergencyService, private formBuilder: FormBuilder,
                 private issueService: IssueService, private inhabitantService: InhabitantService, private dialog: MatDialog,
-                private historyService: HistoryService, private datePipe: DatePipe, private assignmentService: AssignmentService) {
+                private historyService: HistoryService, private datePipe: DatePipe, private assignmentService: AssignmentService,
+                private areaService: AreaService) {
     }
 
     add(chip) {
@@ -81,22 +83,29 @@ export class FrontDeclareComponent implements OnInit {
     ngOnInit() {
         const types = this.typeService.getTypes();
         const emergencies = this.emergencyService.getEmergencies();
+        const areeas = this.areaService.getAreas();
+        const objects = this.emergencyService.getEmergencies();
         const currentMember = this.inhabitantService.getCurrentMember();
 
-        forkJoin(types, emergencies, currentMember).subscribe(([typeValues, emergencyValues, currentMemberValue]) => {
+        forkJoin(types, areeas, objects, emergencies, currentMember).subscribe(([typeValues, areaValues, objectsValues, emergencyValues, currentMemberValue]) => {
             this.types = typeValues;
             this.emergencies = emergencyValues;
+            this.areas = areaValues;
+            this.connectedObjects = objectsValues;
             this.currentMemberId = currentMemberValue.id;
             this.declareForm = this.formBuilder.group({
                     typeCB: [Validators.required],
                     emergencyCB: [Validators.required],
+                    areaCB: [],
+                    identifierCB: [],
                     title: [null, Validators.required],
                     description: [null, Validators.required],
                     location: [null],
                     date: [null],
                     time: [null]
                 }
-            );
+            )
+            ;
             this.formLoaded = Promise.resolve(true);
         });
 
