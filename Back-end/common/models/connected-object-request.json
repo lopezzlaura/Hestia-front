@@ -44,6 +44,14 @@
       "type": "belongsTo",
       "model": "Area",
       "foreignKey": "areaId"
+    },
+    "author": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "authorId",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],
