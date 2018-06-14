@@ -19,6 +19,16 @@
                                 </option>
                             </select>
                         </div>
+
+                        <div class="col s12 m6">
+                            <label>Type d'action *</label>
+                            <select formControlName="actionCB" name="selectedOptionType"
+                                    materialize="material_select">
+                                <option value="" disabled selected>Choisir un type</option>
+                                <option *ngFor="let action of actionTypes" [value]="action">{{action}}</option>
+                            </select>
+                        </div>
+
                     </div>
 
                     <div class="row">
@@ -35,15 +45,6 @@
                         </div>
                     </div>
 
-                    <div class="col s12 m6">
-                        <label>Type d'action *</label>
-                        <select formControlName="actionCB" name="selectedOptionType"
-                                materialize="material_select">
-                            <option value="" disabled selected>Choisir un type</option>
-                            <option *ngFor="let action of actionTypes" [value]="action">{{action}}</option>
-                        </select>
-                    </div>
-
                 </div>
 
 
@@ -57,49 +58,45 @@
                                 <option *ngFor="let area of areas" [value]="area.id">{{area.name}}</option>
                             </select>
                         </div>
+
+                        <div class="col s6">
+                            <div class="row">
+
+                                <label>Objet connecté *</label>
+                                <select formControlName="objectCB" name="selectedOptionType"
+                                        materialize="material_select">
+                                    <option value="" disabled selected>Choisir un objet</option>
+                                    <option *ngFor="let object of connectedObjects" [value]="object.id">{{object.name}}
+                                    </option>
+                                </select>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="col s6">
-                    <div class="row">
-                        <div class="col s12 m6">
-                            <label>Objet connecté *</label>
-                            <select formControlName="objectCB" name="selectedOptionType"
-                                    materialize="material_select">
-                                <option value="" disabled selected>Choisir un objet</option>
-                                <option *ngFor="let object of connectedObjects" [value]="object.id">{{object.name}}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="input-field col s6">
-                    <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
-                        <li>
-                            <div class="collapsible-header"><i class="fa fa-search-plus"></i>Détails</div>
-                            <div class="collapsible-body">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input formControlName="date" id="date" class="datepicker"
+                                   materialize="pickadate"
+                                   [materializeParams]="dateInit">
+                            <label for="date">Date *</label>
+                        </div>
+                    </div>
 
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input formControlName="date" id="date" class="datepicker"
-                                               materialize="pickadate"
-                                               [materializeParams]="dateInit">
-                                        <label for="date">Date *</label>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input formControlName="time" id="hour" materialize="pickatime"
+                                   [materializeParams]="timeInit" type="text" class="timepicker">
+                            <label for="hour">Heure *</label>
+                        </div>
 
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input formControlName="time" id="hour" materialize="pickatime"
-                                               [materializeParams]="timeInit" type="text" class="timepicker">
-                                        <label for="hour">Heure *</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                    </div>
                 </div>
+                
                 <div class="row col s12 offset-m9">
                     <button class="btn waves-effect waves-light" [disabled]="declareForm.invalid"
                             (click)="onDeclare()"
