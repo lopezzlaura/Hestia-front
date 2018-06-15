@@ -13,7 +13,7 @@ module.exports = (app, callback) => {
     }
 
     // Create the tables in the database if they don't exist
-  hestiadb.autoupdate(tables, err => {
+    hestiadb.autoupdate(tables, err => {
         if (err) {
             callback(err);
         }

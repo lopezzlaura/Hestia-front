@@ -3,7 +3,7 @@
         <div class="col s4 non_traites">
             <h4>Déclarés</h4>
             <div>
-                <div *ngFor="let issue of (issues | async)">
+                <div *ngFor="let issue of (IOTissues | async | statePipe:-1)">
                     <app-issue-iot [issueIot]="issue"></app-issue-iot>
                 </div>
             </div>
@@ -12,7 +12,16 @@
         <div class="col s4 non_traites">
             <h4>Résolus</h4>
             <div>
-                <div *ngFor="let issue of (issues | async)">
+                <div *ngFor="let issue of (IOTissues | async | statePipe:1)">
+                    <app-issue-iot [issueIot]="issue"></app-issue-iot>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s4 non_traites">
+            <h4>Alertes</h4>
+            <div>
+                <div *ngFor="let issue of (issues | async | userPipe:'Jarvis')">
                     <app-issue-iot [issueIot]="issue"></app-issue-iot>
                 </div>
             </div>

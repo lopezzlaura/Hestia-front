@@ -56,7 +56,6 @@ import {VisuPagesModule} from "./declaration/visu-pages/visu-pages.module";
         HomePageModule,
         HomeIndexModule,
         ManageMemberModule,
-        IssueIotModule,
         WeatherModule,
         RankingModule,
         HolidayModeModule,
@@ -65,6 +64,7 @@ import {VisuPagesModule} from "./declaration/visu-pages/visu-pages.module";
         CommonPageModule,
         MaterializeModule,
         FrontDeclareModule,
+        IssueIotModule,
         VisuPagesModule,
         IssueModule
     ],

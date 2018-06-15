@@ -14,8 +14,10 @@
         <p>Pièce : {{data.area}}</p>
         <p>Action effectuée : {{data.actionType}}</p>
         <p>Objet actionné : {{data.connectedObject}}</p>
-        <p class="date-label">Date : {{data.date}}</p>
-        <p class="date-label">Heure : {{data.time}}</p>
+        <p class="date-label" *ngIf="data.date != 'null'">Lieu : {{data.date}}</p>
+        <p class="date-label" *ngIf="data.date == 'null'">Lieu : Aucune date spécifiée</p>
+        <p class="date-label" *ngIf="data.time != 'null'">Lieu : {{data.time}}</p>
+        <p class="date-label" *ngIf="data.time == 'null'">Lieu : Aucune heure spécifiée</p>
     </div>
 
 </mat-dialog-content>

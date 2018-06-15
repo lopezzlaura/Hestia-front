@@ -11,10 +11,6 @@
       "type": "string",
       "required": true
     },
-    "description": {
-      "type": "string",
-      "required": true
-    },
     "actionType": {
       "type": "string",
       "required": true
@@ -48,6 +44,16 @@
       "type": "belongsTo",
       "model": "Area",
       "foreignKey": "areaId"
+    },
+    "area-rel": {
+      "type": "belongsTo",
+      "model": "Area",
+      "foreignKey": "areaId"
+    },
+    "state-rel": {
+      "type": "belongsTo",
+      "model": "State",
+      "foreignKey": "stateId"
     }
   },
   "acls": [],

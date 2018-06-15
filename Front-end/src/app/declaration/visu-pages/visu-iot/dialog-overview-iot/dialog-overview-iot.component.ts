@@ -8,6 +8,7 @@ import {AssignmentService} from "../../../../../shared/services/assignment.servi
 import {EmergencyService} from "../../../../../shared/services/emergency.service";
 import {GuestGuard} from "../../../../guards/guest-guard";
 import {InhabitantService} from "../../../../../shared/services/inhabitant.service";
+import {ConnectedObjectRequestService} from "../../../../../shared/services/connected_object_request.service";
 
 @Component({
     selector: 'dialog-overview-example',
@@ -18,8 +19,8 @@ export class DialogOverviewIotComponent implements OnInit {
 
     constructor(
         public dialogRef: MatDialogRef<DialogOverviewIotComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: any, private typeService: TypeService, private emergencyService: EmergencyService, private formBuilder: FormBuilder, private inhabitantService: InhabitantService,
-        private issueService: IssueService, private historyService: HistoryService, private assignmentService: AssignmentService, private guestGuard: GuestGuard) {
+        @Inject(MAT_DIALOG_DATA) public data: any, private connectedObjService: ConnectedObjectRequestService, private emergencyService: EmergencyService, private formBuilder: FormBuilder, private inhabitantService: InhabitantService,
+         private historyService: HistoryService, private assignmentService: AssignmentService, private guestGuard: GuestGuard) {
     }
 
     ngOnInit() {

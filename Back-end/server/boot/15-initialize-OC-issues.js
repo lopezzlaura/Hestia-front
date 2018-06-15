@@ -4,25 +4,25 @@ module.exports = function (app, callback) {
   const requests = [
     {
       "title": "Eteindre la lumière",
-      "description": "Extinction des feux dans la chambre des enfants",
       "actionType": "Eteindre",
       "date": " ",
       "time": " ",
       "areaId": 10,
       "connectedObjectId": 42,
       "emergencyId": 1,
-      "authorId": 1
+      "authorId": 1,
+      "stateId" : -1
     },
     {
       "title": "Allumer la lumière",
-      "description": "Allumage des feux dans la chambre des enfants",
       "actionType": "Allumer",
       "date": " ",
       "time": " ",
       "areaId": 10,
       "connectedObjectId": 42,
       "emergencyId": 1,
-      "authorId": 1
+      "authorId": 1,
+      "stateId" : -1
     }
   ];
 
@@ -34,7 +34,6 @@ module.exports = function (app, callback) {
       Request.findOrCreate({
         where: {
           title: request.title,
-          description: request.description,
           actionType: request.actionType,
           date: request.date,
           time: request.time,

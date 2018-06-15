@@ -7,27 +7,27 @@ import {API_URL} from "./rest/constants";
 import {AreaService} from "./area.service";
 import {ConnectedObjectService} from "./connected_object.service";
 import {forkJoin} from "rxjs/observable/forkJoin";
-import {MqttClient} from "ngx-mqtt/src/mqtt-types";
 import {Observable} from 'rxjs/Observable';
 import {ConnectedObjectRequestModel} from "../models/ConnectedObjectRequestModel";
 import {InhabitantService} from "./inhabitant.service";
 import {EmergencyService} from "./emergency.service";
+import {StateService} from "./state.service";
+import {IssueModel} from "../models/IssueModel";
 
 
 @Injectable()
 export class ConnectedObjectRequestService {
 
-    private client: MqttClient;
     private issueList$: Observable<ConnectedObjectRequestModel[]>;
 
 
-    constructor(private http: HttpClient, private rest: RestService, private emergencyService: EmergencyService, private inhabitantService: InhabitantService, private areaService: AreaService, private connectedObjectService: ConnectedObjectService) {
+    constructor(private http: HttpClient, private rest: RestService, private emergencyService: EmergencyService, private inhabitantService: InhabitantService, private areaService: AreaService, private connectedObjectService: ConnectedObjectService, private stateService:StateService) {
     }
 
     public getConnectedObjectRequests(): Observable<ConnectedObjectRequestModel[]> {
         this.issueList$ = this.http.get<ConnectedObjectRequestModel[]>(API_URL + "ConnectedObjectRequests");
         return this.http.get<ConnectedObjectRequestModel[]>(API_URL + 'ConnectedObjectRequests').map(models => models.map(model => {
-            return new ConnectedObjectRequestModel(model.title, model.description, model.emergencyId, model.actionType, model.connectedObjectId, model.areaId, model.date, model.time, model.authorId, this.inhabitantService, this.connectedObjectService, this.emergencyService, this.areaService, model.id);
+            return new ConnectedObjectRequestModel(model.title, model.emergencyId, model.actionType, model.connectedObjectId, model.areaId, model.date, model.time, model.authorId, model.stateId, this.inhabitantService, this.connectedObjectService, this.emergencyService, this.areaService, this.stateService, model.id);
         }));
     }
 
@@ -35,14 +35,38 @@ export class ConnectedObjectRequestService {
         return this.http.get<ConnectedObjectRequestModel>(API_URL + 'ConnectedObjectRequests/' + id);
     }
 
+    public updateObjectState(id: number, state: number): void {
+        this.issueList$.subscribe(array => array.forEach(value => {
+            if (value.id == id) {
+                console.log("old state : " + value.stateId);
+                console.log("new state : " + state);
+                let issue = {
+                    title: value.title,
+                    date: value.date,
+                    time: value.time,
+                    id: value.id,
+                    areaId : value.areaId,
+                    authorId: value.authorId,
+                    emergencyId: value.emergencyId,
+                    stateId: state,
+                    actionType : value.actionType,
+                    connectedObjectId: value.connectedObjectId
+                };
+                this.http.put<ConnectedObjectRequestModel>(API_URL + 'ConnectedObjectRequests/' + id, issue).subscribe(data => {
+                    console.log(data);
+                });
+            }
+        }));
+    }
+
     public postConnectedObjectIssue(formData: FormData) {
 
         let issue = {
             title: formData.get("title"),
-            description: formData.get("description"),
             emergencyId: formData.get("idEmergency"),
             actionType: formData.get("actionType"),
             areaId: formData.get("zoneId"),
+            stateId: 3,
             connectedObjectId: formData.get("object"),
             date: formData.get("date"),
             time: formData.get("time")
@@ -62,7 +86,7 @@ export class ConnectedObjectRequestService {
                     object: objectValue.name,
                     value: formData.get("actionType").toString()
                 };
-
+/*
                 let mqtt = require('mqtt');
                 let client = mqtt.connect("wb://localhost:8080");
                 let topic = "";
@@ -86,7 +110,7 @@ export class ConnectedObjectRequestService {
                     }
                     client.end()
                 });
-            });
+            });*/
         })
-    }
-}
+    });
+}}

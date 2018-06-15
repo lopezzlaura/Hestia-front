@@ -45,7 +45,6 @@ export class FrontDeclareIotComponent implements OnInit {
                 this.declareForm = this.formBuilder.group({
                         emergencyCB: [Validators.required],
                         title: [null, Validators.required],
-                        description: [null, Validators.required],
                         actionCB: [Validators.required],
                         areasCB: [Validators.required],
                         objectCB: [Validators.required],
@@ -98,7 +97,6 @@ export class FrontDeclareIotComponent implements OnInit {
 
         formData.append("idEmergency", this.declareForm.get("emergencyCB").value);
         formData.append("title", this.declareForm.get("title").value);
-        formData.append("description", this.declareForm.get("description").value);
         formData.append("actionType", this.declareForm.get("actionCB").value == "Allumer" ? "True" : "False");
         formData.append("zoneId", this.declareForm.get("areasCB").value);
 

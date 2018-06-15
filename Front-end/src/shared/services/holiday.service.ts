@@ -16,13 +16,13 @@ export class HolidayService {
         console.log(formData.get("valueBool"));
         console.log(formData.get("temperature"));
 
-        let mqtt = require('mqtt');
-        let client = mqtt.connect("ws://localhost:8080");
-
-        client.on('connect', function () {
-            client.publish('/hestia/holiday', formData.get("valueBool").toString() + ";" + formData.get("temperature").toString());
-            client.end()
-        });
+        // let mqtt = require("mqtt");
+        // let client = mqtt.connect("ws://localhost:8080");
+        //
+        // client.on('connect', function () {
+        //     client.publish('/hestia/holiday', formData.get("valueBool").toString() + ";" + formData.get("temperature").toString());
+        //     client.end()
+        // });
 
         /*
         this._mqttService.connect({

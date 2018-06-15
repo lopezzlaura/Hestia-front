@@ -24,7 +24,6 @@ export class IssueIotComponent implements OnInit {
             data: {
                 id: this.issueIot.id,
                 title: this.issueIot.title,
-                description: this.issueIot.description,
                 emergency: this.issueIot.emergency.name,
                 area: this.issueIot.area.name,
                 type: this.issueIot.actionType,

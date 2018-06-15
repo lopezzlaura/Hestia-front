@@ -3,17 +3,17 @@ import {IssueModel} from "../models/IssueModel";
 import {ConnectedObjectRequestModel} from "../models/ConnectedObjectRequestModel";
 
 @Pipe({
-    name: 'statePipe',
+    name: 'userPipe',
     pure: false
 })
-export class StatePipe implements PipeTransform {
+export class UserPipe implements PipeTransform {
 
-    transform(items: ConnectedObjectRequestModel[], value:number) : any{
+    transform(items: ConnectedObjectRequestModel[], firstname:string) : any{
 
         if (items == null) {
             return null;
         }
 
-        return items.filter((item) => item.state != undefined && item.state.value == value);
+        return items.filter((item) => item.author != undefined && item.author.firstname == firstname);
     }
 }

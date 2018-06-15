@@ -87,10 +87,10 @@ export class VisuIncidentsComponent implements OnInit {
             let issueId = parseInt(issueIdAttr.slice(issueIdAttr.indexOf("-"))[1]);
             this.issueService.updateState(issueId, newState);
 
-        const state = this.stateService.getState(newState);
-        forkJoin(state).subscribe(value => {
-            this.historyService.postHistory(" a été passé " + value[0].name, issueId);
-        });
+            const state = this.stateService.getState(newState);
+            forkJoin(state).subscribe(value => {
+                this.historyService.postHistory(" a été passé " + value[0].name, issueId);
+            });
         });
     }
 }
