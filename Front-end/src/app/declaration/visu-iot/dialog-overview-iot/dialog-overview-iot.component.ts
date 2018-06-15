@@ -23,8 +23,7 @@ export class DialogOverviewIotComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.data.connectedObject);
-        console.log(this.data.emergency);
+
     }
 
     close() {

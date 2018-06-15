@@ -1,6 +1,9 @@
 <mat-dialog-actions>
     <i class="material-icons right" (click)="close()" style="cursor: pointer">clear</i>
 </mat-dialog-actions>
+<div class="details-image">
+    <img class="responsive-img" src="../../../../assets/images/icons/smart-light.png">
+</div>
 <div class="card-head">
     <h2>{{data.title}}</h2>
     <p>{{data.author.firstname}} {{data.author.lastname}}</p>
@@ -13,7 +16,8 @@
         <p>Objet actionné : {{data.connectedObject}}</p>
         <p class="date-label">Date : {{data.date}}</p>
         <p class="date-label">Heure : {{data.time}}</p>
-
     </div>
 
 </mat-dialog-content>
+<button class="btn waves-effect waves-light" (click)="close()"
+        name="action">Valider<i class="material-icons right">done</i></button>
