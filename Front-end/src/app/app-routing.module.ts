@@ -19,7 +19,7 @@ const routes: Routes = [
             {path: "welcome", component: HomeIndexComponent},
             {path: "declare", component: IndexDeclarationComponent},
             {path: "visuIncidents", component: VisuIncidentsComponent},
-            {path: "visuIOT", component: VisuIotComponent},
+            {path: "visuIot", component: VisuIotComponent},
             {path: "profil", component: ProfilComponent}
         ]
     }

@@ -35,6 +35,7 @@ export class ConnectedObjectRequestService {
         return this.http.get<ConnectedObjectRequestModel>(API_URL + 'ConnectedObjectRequests/' + id);
     }
 
+
     public postConnectedObjectIssue(formData: FormData) {
 
         let issue = {
@@ -64,7 +65,6 @@ export class ConnectedObjectRequestService {
                     object: objectValue.name,
                     value: bool
                 };
-                // this.http.post(NODE_RED_API_URL + "ConnectedObject", request).subscribe(post => console.log(post));
             });
         })
     }

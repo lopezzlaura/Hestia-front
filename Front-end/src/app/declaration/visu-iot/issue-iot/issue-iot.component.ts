@@ -30,7 +30,8 @@ export class IssueIotComponent implements OnInit {
                 type: this.issueIot.actionType,
                 date: this.issueIot.date,
                 author: this.issueIot.author,
-                //time: this.issueIot.time,
+                time: this.issueIot.time,
+                actionType: this.issueIot.actionType,
                 connectedObject: this.issueIot.connectedObject.name
             }
         });

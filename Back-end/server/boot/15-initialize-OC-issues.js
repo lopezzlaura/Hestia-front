@@ -6,10 +6,10 @@ module.exports = function (app, callback) {
       "title": "Eteindre la lumière",
       "description": "Extinction des feux dans la chambre des enfants",
       "actionType": "Eteindre",
-      "date": "A",
-      "time": "A",
-      "areaId": 2,
-      "connectedObjectId": 1,
+      "date": " ",
+      "time": " ",
+      "areaId": 10,
+      "connectedObjectId": 42,
       "emergencyId": 1,
       "authorId": 1
     },
@@ -17,10 +17,10 @@ module.exports = function (app, callback) {
       "title": "Allumer la lumière",
       "description": "Allumage des feux dans la chambre des enfants",
       "actionType": "Allumer",
-      "date": "A",
-      "time": "A",
-      "areaId": 2,
-      "connectedObjectId": 2,
+      "date": " ",
+      "time": " ",
+      "areaId": 10,
+      "connectedObjectId": 42,
       "emergencyId": 1,
       "authorId": 1
     }
@@ -51,11 +51,10 @@ module.exports = function (app, callback) {
       });
     }));
   });
-  !
-    Promise.all(promises)
-      .then(() => {
-        callback();
-      }).catch(err => {
-      callback(err);
-    });
+  Promise.all(promises)
+    .then(() => {
+      callback();
+    }).catch(err => {
+    callback(err);
+  });
 };

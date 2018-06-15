@@ -23,6 +23,7 @@ export class DialogOverviewIotComponent implements OnInit {
     }
 
     ngOnInit() {
+
     }
 
     close() {
