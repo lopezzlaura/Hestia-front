@@ -1,30 +1,18 @@
-
 <mat-dialog-actions>
     <i class="material-icons right" (click)="close()" style="cursor: pointer">clear</i>
 </mat-dialog-actions>
-<div class="details-image">
-    <img class="responsive-img" src={{data.image}}>
-</div>
 <div class="card-head">
     <h2>{{data.title}}</h2>
-    <p>{{data.author}}</p>
+    <p>{{data.author.firstname}} {{data.author.lastname}}</p>
 </div>
 <mat-dialog-content>
     <div>
-
-        <p>Importance : {{data.emergency?.name}}</p>
-        <p>Zone : {{data.area}}</p>
-        <p>Pièce : {{data.area.name}}</p>
+        <p>Importance : {{data.emergency}}</p>
+        <p>Pièce : {{data.area}}</p>
+        <p>Action effectuée : {{data.actionType}}</p>
+        <p>Objet actionné : {{data.connectedObject}}</p>
         <p class="date-label">Date : {{data.date}}</p>
         <p class="date-label">Heure : {{data.time}}</p>
-
-
-        <div>Rapport d'action(s) effectuée(s) :
-             <div *ngIf="data.actionsToDo.length == 0">Aucune action à effectuer</div>
-            <div *ngFor="let action of (data.actionsToDo)">
-                {{action.actionDescription}}
-            </div>
-        </div>
 
     </div>
 
