@@ -11,18 +11,25 @@ import {MqttService} from "angular2-mqtt";
 import {MqttClient} from "ngx-mqtt/src/mqtt-types";
 import {Observable} from 'rxjs/Observable';
 import {ConnectedObjectRequestModel} from "../models/ConnectedObjectRequestModel";
+import {InhabitantService} from "./inhabitant.service";
+import {EmergencyService} from "./emergency.service";
 
 
 @Injectable()
 export class ConnectedObjectRequestService {
 
     private client: MqttClient;
+    private issueList$: Observable<ConnectedObjectRequestModel[]>;
 
-    constructor(private http: HttpClient, private _mqttService: MqttService, private rest: RestService, private areaService: AreaService, private connectedObjectService: ConnectedObjectService) {
+
+    constructor(private http: HttpClient, private _mqttService: MqttService, private rest: RestService, private emergencyService: EmergencyService, private inhabitantService: InhabitantService, private areaService: AreaService, private connectedObjectService: ConnectedObjectService) {
     }
 
     public getConnectedObjectRequests(): Observable<ConnectedObjectRequestModel[]> {
-        return this.http.get<ConnectedObjectRequestModel[]>(API_URL + 'ConnectedObjectRequests');
+        this.issueList$ = this.http.get<ConnectedObjectRequestModel[]>(API_URL + "ConnectedObjectRequests");
+        return this.http.get<ConnectedObjectRequestModel[]>(API_URL + 'ConnectedObjectRequests').map(models => models.map(model => {
+            return new ConnectedObjectRequestModel(model.title, model.description, model.emergencyId, model.actionType, model.connectedObjectId, model.areaId, model.date, model.time, model.authorId, this.inhabitantService, this.connectedObjectService, this.emergencyService, this.areaService, model.id);
+        }));
     }
 
     public getConnectedObjectRequest(id: number): Observable<ConnectedObjectRequestModel> {
