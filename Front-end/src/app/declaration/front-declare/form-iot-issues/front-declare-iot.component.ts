@@ -116,6 +116,19 @@ export class FrontDeclareIotComponent implements OnInit {
 
         formData.append("date", this.declareForm.get("date").value == null ? this.datePipe.transform(new Date(), "dd-MM-yyyy").toString() : this.datePipe.transform(new Date(this.declareForm.get("date").value), "dd-MM-yyyy").toString());
         formData.append("time", this.declareForm.get("time").value != null ? this.declareForm.get("time").value.toString() : null);
-        return formData;
+
+        if (this.declareForm.get("date").value != null) {
+            let date = new Date();
+            let day = this.datePipe.transform(new Date(this.declareForm.get("date").value), "dd").toString();
+            let month = this.datePipe.transform(new Date(this.declareForm.get("date").value), "MM").toString();
+            let year = this.datePipe.transform(new Date(this.declareForm.get("date").value), "yyyy").toString();
+            let hourTab = formData.get("time").toString().split(":");
+            let hour = parseInt(hourTab[0]);
+            let minute = parseInt(hourTab[1]);
+            date.setFullYear(parseInt(year), parseInt(month), parseInt(day));
+            date.setHours(hour, minute);
+            formData.set("date-milli", date.getTime().toString());
+            return formData;
+        }
     }
 }

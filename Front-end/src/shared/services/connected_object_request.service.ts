@@ -7,7 +7,6 @@ import {API_URL} from "./rest/constants";
 import {AreaService} from "./area.service";
 import {ConnectedObjectService} from "./connected_object.service";
 import {forkJoin} from "rxjs/observable/forkJoin";
-import {MqttService} from "angular2-mqtt";
 import {MqttClient} from "ngx-mqtt/src/mqtt-types";
 import {Observable} from 'rxjs/Observable';
 import {ConnectedObjectRequestModel} from "../models/ConnectedObjectRequestModel";
@@ -22,7 +21,7 @@ export class ConnectedObjectRequestService {
     private issueList$: Observable<ConnectedObjectRequestModel[]>;
 
 
-    constructor(private http: HttpClient, private _mqttService: MqttService, private rest: RestService, private emergencyService: EmergencyService, private inhabitantService: InhabitantService, private areaService: AreaService, private connectedObjectService: ConnectedObjectService) {
+    constructor(private http: HttpClient, private rest: RestService, private emergencyService: EmergencyService, private inhabitantService: InhabitantService, private areaService: AreaService, private connectedObjectService: ConnectedObjectService) {
     }
 
     public getConnectedObjectRequests(): Observable<ConnectedObjectRequestModel[]> {

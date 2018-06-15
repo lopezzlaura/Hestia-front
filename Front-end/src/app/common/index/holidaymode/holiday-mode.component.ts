@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Http} from "@angular/http";
 import {HolidayService} from "../../../../shared/services/holiday.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ConnectedObjectRequestService} from "../../../../shared/services/connected_object_request.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
     selector: 'app-holidaymode',
@@ -35,9 +33,9 @@ export class HolidayModeComponent implements OnInit {
             this.display = "Activer";
         }
         if (this.alarm) {
-            this.displayAlarm = "Activée";
+            this.displayAlarm = "Activer";
         } else {
-            this.displayAlarm = "Désactivée";
+            this.displayAlarm = "Désactiver";
         }
 
         this.holidayForm = this.formBuilder.group({
@@ -75,10 +73,10 @@ export class HolidayModeComponent implements OnInit {
     changeAlarm() {
         if (this.alarm) {
             this.alarm = false;
-            this.displayAlarm = "Désactivée"
+            this.displayAlarm = "Désactiver"
         } else {
             this.alarm = true;
-            this.displayAlarm = "Activée"
+            this.displayAlarm = "Activer"
         }
     }
 }
