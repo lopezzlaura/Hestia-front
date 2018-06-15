@@ -35,7 +35,6 @@ export class ConnectedObjectRequestService {
         return this.http.get<ConnectedObjectRequestModel>(API_URL + 'ConnectedObjectRequests/' + id);
     }
 
-
     public postConnectedObjectIssue(formData: FormData) {
 
         let issue = {
@@ -55,16 +54,38 @@ export class ConnectedObjectRequestService {
             const objectRequest = this.connectedObjectService.getConnectedObject(object.connectedObjectId);
 
             forkJoin(areaRequest, objectRequest).subscribe(([areaValue, objectValue]) => {
-                let bool = formData.get("actionType") == "True";
 
                 console.log(areaValue.identifier);
                 console.log(objectValue.name);
-                console.log(bool);
                 let request = {
                     zone: areaValue.identifier,
                     object: objectValue.name,
-                    value: bool
+                    value: formData.get("actionType").toString()
                 };
+
+                let mqtt = require('mqtt');
+                let client = mqtt.connect("wb://localhost:8080");
+                let topic = "";
+
+                client.on('connect', function () {
+                    if (request.object.match("Garage_Door")) {
+                        topic = '/home/' + request.zone + '/Output/bool/' + request.object + "_(Close)";
+                        client.publish("/hestia/request", topic + ";" + (formData.get("actionType").toString() == "True" ? "False" : "True") + ";" + formData.get("date-milli").toString());
+                        topic = '/home/' + request.zone + '/Output/bool/' + request.object + "_(Open)";
+                        client.publish("/hestia/request", topic + ";" + formData.get("actionType").toString() + ";" + formData.get("date-milli").toString());
+                    } else if (request.object.match("Roller_Shades")) {
+                        topic = '/home/' + request.zone + '/Output/bool/' + request.object + "_(Down)";
+                        client.publish("/hestia/request", topic + ";" + (formData.get("actionType").toString() == "True" ? "False" : "True") + ";" + formData.get("date-milli").toString());
+                        topic = '/home/' + request.zone + '/Output/bool/' + request.object + "_(Up)";
+                        client.publish("/hestia/request", topic + ";" + formData.get("actionType").toString() + ";" + formData.get("date-milli").toString());
+                    } else {
+                        topic = '/home/' + request.zone + '/Output/bool/' + request.object;
+                        console.log(topic);
+                        console.log("data milli : " + formData.get("date-milli"));
+                        client.publish("/hestia/request", topic + ";" + formData.get("actionType").toString() + ";" + formData.get("date-milli").toString());
+                    }
+                    client.end()
+                });
             });
         })
     }

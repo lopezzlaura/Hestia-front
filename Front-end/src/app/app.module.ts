@@ -30,7 +30,6 @@ import {MaterializeModule} from "angular2-materialize";
 import {FrontDeclareModule} from "./declaration/front-declare/front-declare.module";
 import {EmergencyService} from "../shared/services/emergency.service";
 import {IssueModule} from "./declaration/issue/issue.module";
-import {VisuIncidentsModule} from "./declaration/visu-incidents/visu-incidents.module";
 import {MemberGuard} from "./guards/member-guard";
 import {GuestGuard} from "./guards/guest-guard";
 import {RankingModule} from "./common/index/ranking/ranking.module";
@@ -42,8 +41,8 @@ import {HolidayService} from "../shared/services/holiday.service";
 import {HolidayModeModule} from "./common/index/holidaymode/holiday-mode.module";
 import {AreaService} from "../shared/services/area.service";
 import {ConnectedObjectRequestService} from "../shared/services/connected_object_request.service";
-import {IssueIotModule} from "./declaration/visu-iot/issue-iot/issue-iot.module";
-import {VisuIotModule} from "./declaration/visu-iot/visu-iot.module";
+import {IssueIotModule} from "./declaration/visu-pages/visu-iot/issue-iot/issue-iot.module";
+import {VisuPagesModule} from "./declaration/visu-pages/visu-pages.module";
 
 @NgModule({
     declarations: [
@@ -66,8 +65,7 @@ import {VisuIotModule} from "./declaration/visu-iot/visu-iot.module";
         CommonPageModule,
         MaterializeModule,
         FrontDeclareModule,
-        VisuIncidentsModule,
-        VisuIotModule,
+        VisuPagesModule,
         IssueModule
     ],
     providers: [

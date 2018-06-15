@@ -1,10 +1,10 @@
-///<reference path="../../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
+///<reference path="../../../../../node_modules/@angular/core/src/metadata/directives.d.ts"/>
 import {Component, OnInit} from '@angular/core';
-import {ManagerGuard} from "../../guards/manager-guard";
+import {ManagerGuard} from "../../../guards/manager-guard";
 import {Observable} from "rxjs/Observable";
-import {InhabitantService} from "../../../shared/services/inhabitant.service";
-import {ConnectedObjectRequestModel} from "../../../shared/models/ConnectedObjectRequestModel";
-import {ConnectedObjectRequestService} from "../../../shared/services/connected_object_request.service";
+import {InhabitantService} from "../../../../shared/services/inhabitant.service";
+import {ConnectedObjectRequestModel} from "../../../../shared/models/ConnectedObjectRequestModel";
+import {ConnectedObjectRequestService} from "../../../../shared/services/connected_object_request.service";
 
 @Component({
     selector: 'app-visu-iot',

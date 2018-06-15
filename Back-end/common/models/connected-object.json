@@ -14,11 +14,6 @@
   },
   "validations": [],
   "relations": {
-    "objects_rel": {
-      "type": "belongsTo",
-      "model": "Area",
-      "foreignKey": "areaId"
-    }
   },
   "acls": [],
   "methods": {}

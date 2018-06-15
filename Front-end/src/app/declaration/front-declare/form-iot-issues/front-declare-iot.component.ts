@@ -9,7 +9,6 @@ import {ConnectedObjectModel} from "../../../../shared/models/ConnectedObjectMod
 import {ConnectedObjectService} from "../../../../shared/services/connected_object.service";
 import {ConnectedObjectRequestService} from "../../../../shared/services/connected_object_request.service";
 import {DatePipe} from "@angular/common";
-import {MqttService} from "angular2-mqtt";
 
 @Component({
     selector: "app-front-declare-iot",
@@ -28,7 +27,7 @@ export class FrontDeclareIotComponent implements OnInit {
     dateInit;
     timeInit;
 
-    constructor(private _mqttService: MqttService, private emergencyService: EmergencyService, private formBuilder: FormBuilder, private areaService: AreaService, private connectedObjectsService: ConnectedObjectService,
+    constructor(private emergencyService: EmergencyService, private formBuilder: FormBuilder, private areaService: AreaService, private connectedObjectsService: ConnectedObjectService,
                 private connectedObjectRequestService: ConnectedObjectRequestService,
                 private datePipe: DatePipe) {
     }
@@ -122,12 +121,24 @@ export class FrontDeclareIotComponent implements OnInit {
             let day = this.datePipe.transform(new Date(this.declareForm.get("date").value), "dd").toString();
             let month = this.datePipe.transform(new Date(this.declareForm.get("date").value), "MM").toString();
             let year = this.datePipe.transform(new Date(this.declareForm.get("date").value), "yyyy").toString();
+
+            console.log(day);
+            console.log(month);
+            console.log(year);
+
             let hourTab = formData.get("time").toString().split(":");
             let hour = parseInt(hourTab[0]);
             let minute = parseInt(hourTab[1]);
+
+            console.log(hour);
+            console.log(minute);
+
             date.setFullYear(parseInt(year), parseInt(month), parseInt(day));
             date.setHours(hour, minute);
-            formData.set("date-milli", date.getTime().toString());
+
+            console.log(date.getTime().toString());
+
+            formData.append("date-milli", date.getTime().toString());
             return formData;
         }
     }

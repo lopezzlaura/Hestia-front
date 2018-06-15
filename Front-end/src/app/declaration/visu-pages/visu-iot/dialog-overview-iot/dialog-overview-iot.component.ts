@@ -1,13 +1,13 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-import {IssueService} from "../../../../shared/services/issue.service";
+import {IssueService} from "../../../../../shared/services/issue.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {TypeService} from "../../../../shared/services/type.service";
-import {HistoryService} from "../../../../shared/services/history.service";
-import {AssignmentService} from "../../../../shared/services/assignment.service";
-import {EmergencyService} from "../../../../shared/services/emergency.service";
-import {GuestGuard} from "../../../guards/guest-guard";
-import {InhabitantService} from "../../../../shared/services/inhabitant.service";
+import {TypeService} from "../../../../../shared/services/type.service";
+import {HistoryService} from "../../../../../shared/services/history.service";
+import {AssignmentService} from "../../../../../shared/services/assignment.service";
+import {EmergencyService} from "../../../../../shared/services/emergency.service";
+import {GuestGuard} from "../../../../guards/guest-guard";
+import {InhabitantService} from "../../../../../shared/services/inhabitant.service";
 
 @Component({
     selector: 'dialog-overview-example',

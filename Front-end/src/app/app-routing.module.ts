@@ -5,10 +5,10 @@ import {HomePageComponent} from "./common/homepage/app-homepage.component";
 import {CommonPageComponent} from "./common/app-common.component";
 import {AuthGuard} from "./guards/auth-guard";
 import {HomeIndexComponent} from "./common/index";
-import {VisuIncidentsComponent} from "./declaration/visu-incidents/visu-incidents.component";
+import {VisuIncidentsComponent} from "./declaration/visu-pages/visu-incidents/visu-incidents.component";
 import {ProfilComponent} from "./common/profil/profil.component";
 import {IndexDeclarationComponent} from "./declaration/front-declare/index-declaration/index-declaration.component";
-import {VisuIotComponent} from "./declaration/visu-iot/visu-iot.component";
+import {VisuIotComponent} from "./declaration/visu-pages/visu-iot/visu-iot.component";
 
 const routes: Routes = [
     {path: "", redirectTo: "index", pathMatch: "full"},

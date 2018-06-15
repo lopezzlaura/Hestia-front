@@ -8,5 +8,14 @@
                 </div>
             </div>
         </div>
+
+        <div class="col s4 non_traites">
+            <h4>Résolus</h4>
+            <div>
+                <div *ngFor="let issue of (issues | async)">
+                    <app-issue-iot [issueIot]="issue"></app-issue-iot>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

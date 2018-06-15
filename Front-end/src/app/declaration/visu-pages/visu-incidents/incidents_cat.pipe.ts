@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {IssueModel} from "../../../shared/models/IssueModel";
+import {IssueModel} from "../../../../shared/models/IssueModel";
 
 @Pipe({
     name: 'incidentTypePipe',

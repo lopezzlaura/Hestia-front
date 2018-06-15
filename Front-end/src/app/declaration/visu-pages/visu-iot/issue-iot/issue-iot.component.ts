@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {DialogOverviewIotComponent} from "../dialog-overview-iot/dialog-overview-iot.component";
-import {ConnectedObjectRequestModel} from "../../../../shared/models/ConnectedObjectRequestModel";
+import {ConnectedObjectRequestModel} from "../../../../../shared/models/ConnectedObjectRequestModel";
 
 @Component({
     selector: 'app-issue-iot',

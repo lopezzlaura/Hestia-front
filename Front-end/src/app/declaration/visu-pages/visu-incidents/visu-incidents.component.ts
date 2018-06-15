@@ -1,14 +1,14 @@
 import {Component, OnInit} from "@angular/core";
-import {IssueService} from "../../../shared/services/issue.service";
-import {InhabitantService} from "../../../shared/services/inhabitant.service";
-import {IssueModel} from "../../../shared/models/IssueModel";
+import {IssueService} from "../../../../shared/services/issue.service";
+import {InhabitantService} from "../../../../shared/services/inhabitant.service";
+import {IssueModel} from "../../../../shared/models/IssueModel";
 import {Observable} from "rxjs/Observable";
 import {forkJoin} from "rxjs/observable/forkJoin";
 import {DragulaService} from "ng2-dragula";
-import {ManagerGuard} from "../../guards/manager-guard";
-import {HistoryService} from "../../../shared/services/history.service";
-import {StateService} from "../../../shared/services/state.service";
-import {GuestGuard} from "../../guards/guest-guard";
+import {ManagerGuard} from "../../../guards/manager-guard";
+import {HistoryService} from "../../../../shared/services/history.service";
+import {StateService} from "../../../../shared/services/state.service";
+import {GuestGuard} from "../../../guards/guest-guard";
 
 @Component({
     selector: "app-visuIncidents",
