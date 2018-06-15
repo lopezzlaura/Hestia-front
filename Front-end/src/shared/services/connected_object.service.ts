@@ -15,10 +15,10 @@ export class ConnectedObjectService {
     }
 
     public getConnectedObjects(): Observable<ConnectedObjectModel[]> {
-        return this.http.get<ConnectedObjectModel[]>(API_URL + 'connectedObjects');
+        return this.http.get<ConnectedObjectModel[]>(API_URL + 'ConnectedObjects');
     }
 
     public getConnectedObject(id: number): Observable<ConnectedObjectModel> {
-        return this.http.get<ConnectedObjectModel>(API_URL + 'connectedObjects/' + id);
+        return this.http.get<ConnectedObjectModel>(API_URL + 'ConnectedObjects/' + id);
     }
 }

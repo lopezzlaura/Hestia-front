@@ -11,14 +11,6 @@ module.exports = function (app, callback) {
       "emailVerified": true,
     },
     {
-      "username": "jarvis",
-      "email": "edwin.jarvis@gmail.com",
-      "firstname": "Jarvis",
-      "lastname": " ",
-      "password": "12345678",
-      "emailVerified": true,
-    },
-    {
       "username": "sarah",
       "email": "sarah.durand@gmail.com",
       "firstname": "Sarah",

@@ -5,3 +5,11 @@ p {
 label {
     font-size: 0.75em;
 }
+
+h1 {
+    font-size: 300%;
+}
+
+#title {
+    text-align: center;
+}

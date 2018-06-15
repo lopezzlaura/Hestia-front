@@ -13,7 +13,7 @@
     },
     "identifier": {
       "type": "string",
-      "required": false
+      "required": true
     }
   },
   "validations": [],
@@ -21,27 +21,9 @@
     "objects_rel": {
       "type": "hasMany",
       "model": "connectedObject",
-      "foreignKey": "object-id"
+      "foreignKey": "area-id"
     }
   },
   "acls": [],
-  "methods": {
-    "getAreaOfType": {
-      "accepts": [
-        {
-          "arg": "areaType",
-          "type": "string"
-        }
-      ],
-      "returns": {
-        "arg": "area",
-        "type": "Object",
-        "root": true
-      },
-      "http": {
-        "verb": "get",
-        "path": "/getAreasOfType"
-      }
-    }
-  }
+  "methods": {}
 }

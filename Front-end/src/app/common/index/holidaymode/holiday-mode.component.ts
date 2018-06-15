@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Http} from "@angular/http";
 import {HolidayService} from "../../../../shared/services/holiday.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
     selector: 'app-holidaymode',
@@ -14,8 +13,9 @@ export class HolidayModeComponent implements OnInit {
     activated: boolean;
     temperature: number;
     alarm: boolean;
+    holidayForm: FormGroup;
 
-    constructor(private hs: HolidayService) {
+    constructor(private hs: HolidayService, private formBuilder: FormBuilder) {
     }
 
     ngOnInit() {
@@ -33,10 +33,14 @@ export class HolidayModeComponent implements OnInit {
             this.display = "Activer";
         }
         if (this.alarm) {
-            this.displayAlarm = "Activée";
+            this.displayAlarm = "Activer";
         } else {
-            this.displayAlarm = "Désactivée";
+            this.displayAlarm = "Désactiver";
         }
+
+        this.holidayForm = this.formBuilder.group({
+            temp: []
+        });
     }
 
     onClick() {
@@ -44,26 +48,35 @@ export class HolidayModeComponent implements OnInit {
             this.display = "Désactiver";
             this.activated = true;
             console.log("Activé")
+            this.hs.activateHolidayMode(this.createData("True", this.holidayForm.get("temp").value));
         } else {
             this.display = "Activer";
             this.activated = false;
             console.log("Désactivé");
+            this.hs.activateHolidayMode(this.createData("False", this.holidayForm.get("temp").value));
         }
 
         this.hs.changeHolidayState(this.activated);
         if (this.activated == true) {
-            //TODO get temperature et appeler this.hs.setTemperature(this.temperature);
+            this.hs.setTemperature(this.holidayForm.get("temp").value);
             this.hs.changeAlarmState(this.alarm);
         }
+    }
+
+    private createData(value: string, temp: number): FormData {
+        const formData = new FormData();
+        formData.append("valueBool", value);
+        formData.append("temperature", temp.toString());
+        return formData;
     }
 
     changeAlarm() {
         if (this.alarm) {
             this.alarm = false;
-            this.displayAlarm = "Désactivée"
+            this.displayAlarm = "Désactiver"
         } else {
             this.alarm = true;
-            this.displayAlarm = "Activée"
+            this.displayAlarm = "Activer"
         }
     }
 }

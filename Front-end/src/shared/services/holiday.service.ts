@@ -11,6 +11,28 @@ export class HolidayService {
     constructor(private http: HttpClient, private rest: RestService) {
     }
 
+    public activateHolidayMode(formData: FormData) {
+
+        console.log(formData.get("valueBool"));
+        console.log(formData.get("temperature"));
+
+        let mqtt = require('mqtt');
+        let client = mqtt.connect("ws://localhost:8080");
+
+        client.on('connect', function () {
+            client.publish('/hestia/holiday', formData.get("valueBool").toString() + ";" + formData.get("temperature").toString());
+            client.end()
+        });
+
+        /*
+        this._mqttService.connect({
+            hostname: "localhost",
+            port: 8080
+        });
+        this._mqttService.unsafePublish('/hestia/holiday', formData.get("valueBool") + ";" + formData.get("temperature"));*/
+    }
+
+
     public getHolidayMode(): Observable<HolidayModel> {
         return this.http.get<HolidayModel>(API_URL + 'Holidays/1');
     }

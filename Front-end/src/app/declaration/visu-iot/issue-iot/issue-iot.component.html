@@ -1,0 +1,12 @@
+<div class="card z-depth-4" xmlns="http://www.w3.org/1999/html" (click)="openDialog()">
+    <div class="card-content activator black-text">
+        <!--<div class="row title_and_icon">
+            <span class="card-title title_first col s11">{{issueIot.title}}</span>
+            <i class="icon_title material-icons right activator col s1">more_horiz</i>
+        </div>-->
+        <h1 class="card-title">{{issueIot.title}}</h1>
+        <!--<p>Type de l'incident : {{issueIot.type?.name}}</p>-->
+        <p>Auteur : {{issueIot.author?.firstname + ' '+issueIot.author?.lastname}}</p>
+        <p>Importance : {{issueIot.emergency?.name}}</p>
+    </div>
+</div>

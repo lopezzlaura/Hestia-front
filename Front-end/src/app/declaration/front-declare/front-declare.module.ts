@@ -14,7 +14,6 @@ import {RouterModule, Routes} from "@angular/router";
 import {CommonPageComponent} from "../../common/app-common.component";
 import {AuthGuard} from "../../guards/auth-guard";
 
-
 const appRoutes: Routes = [
     {
         path: "home/declare", component: CommonPageComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],

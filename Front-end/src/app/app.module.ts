@@ -41,6 +41,9 @@ import {ConnectedObjectService} from "../shared/services/connected_object.servic
 import {HolidayService} from "../shared/services/holiday.service";
 import {HolidayModeModule} from "./common/index/holidaymode/holiday-mode.module";
 import {AreaService} from "../shared/services/area.service";
+import {ConnectedObjectRequestService} from "../shared/services/connected_object_request.service";
+import {IssueIotModule} from "./declaration/visu-iot/issue-iot/issue-iot.module";
+import {VisuIotModule} from "./declaration/visu-iot/visu-iot.module";
 
 @NgModule({
     declarations: [
@@ -54,6 +57,7 @@ import {AreaService} from "../shared/services/area.service";
         HomePageModule,
         HomeIndexModule,
         ManageMemberModule,
+        IssueIotModule,
         WeatherModule,
         RankingModule,
         HolidayModeModule,
@@ -63,6 +67,7 @@ import {AreaService} from "../shared/services/area.service";
         MaterializeModule,
         FrontDeclareModule,
         VisuIncidentsModule,
+        VisuIotModule,
         IssueModule
     ],
     providers: [
@@ -80,6 +85,7 @@ import {AreaService} from "../shared/services/area.service";
         HistoryService,
         AreaService,
         ConnectedObjectService,
+        ConnectedObjectRequestService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,

@@ -2,34 +2,30 @@
     <div class="card horizontal">
         <div class="card-stacked">
             <div class="card-content">
-                <p>Mode vacances</p>
+                <h1>Mode vacances</h1>
             </div>
-            <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">build</i>Paramètres du mode vacances</div>
-                    <div class="collapsible-body">
-                        <div class="row">
-                            <button class="btn waves-effect waves-light" (click)="changeAlarm()">Alarme</button>
-                            <p>Etat actuel : {{displayAlarm}}</p>
-                        </div>
-                        <div class="row">
-                            <div class="input-field">
-                                <input value="temp" id="temperature" type="number" class="validate">
-                                <label for="temperature">Température minimale d'activation du chauffage (en °C)</label>
-                            </div>
-                            <p>Température actuelle : {{temperature}}</p>
-                        </div>
+            <form [formGroup]="holidayForm" class="col s12">
+
+                <div class="row">
+                    <button class="btn waves-effect waves-light" (click)="changeAlarm()">{{displayAlarm}} alarme</button>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <input formControlName="temp" value="temp" id="temperature" type="number" class="validate">
+                        <label for="temperature">Température minimale d'activation du chauffage (en °C)</label>
                     </div>
-                </li>
-            </ul>
-            <div class="card-action">
-                <button class="btn waves-effect waves-light" (click)="onClick()"
-                        name="action">
-                    {{display}}
-                    <i *ngIf="display=='Désactiver'" class="material-icons right logo">highlight_off</i>
-                    <i *ngIf="display=='Activer'" class="material-icons right logo">check_circle_outline</i>
-                </button>
-            </div>
+                    <p>Température actuelle : {{temperature}}</p>
+                </div>
+
+                <div class="card-action">
+                    <button class="btn waves-effect waves-light" (click)="onClick()"
+                            name="action">
+                        {{display}}
+                        <i *ngIf="display=='Désactiver'" class="material-icons right logo">highlight_off</i>
+                        <i *ngIf="display=='Activer'" class="material-icons right logo">check_circle_outline</i>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
