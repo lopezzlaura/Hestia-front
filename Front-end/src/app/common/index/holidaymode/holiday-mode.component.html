@@ -3,29 +3,30 @@
         <div class="card-stacked">
             <div class="card-content">
                 <h1>Mode vacances</h1>
-            </div>
-            <form [formGroup]="holidayForm" class="col s12">
+                <form [formGroup]="holidayForm" class="col s12">
 
-                <div class="row">
-                    <button class="btn waves-effect waves-light" (click)="changeAlarm()">{{displayAlarm}} alarme</button>
-                </div>
-                <div class="row">
-                    <div class="input-field">
-                        <input formControlName="temp" value="temp" id="temperature" type="number" class="validate">
-                        <label for="temperature">Température minimale d'activation du chauffage (en °C)</label>
+                    <div class="row">
+                        <button class="btn waves-effect waves-light" (click)="changeAlarm()">{{displayAlarm}} alarme
+                        </button>
                     </div>
-                    <p>Température actuelle : {{temperature}}</p>
-                </div>
+                    <div class="row">
+                        <div class="input-field">
+                            <input formControlName="temp" value="temp" id="temperature" type="number" class="validate">
+                            <label for="temperature">Température minimale pour le chauffage (en °C)</label>
+                        </div>
+                        <p class="actualTemp">La température minimale actuelle est de {{temperature}} degrés.</p>
+                    </div>
 
-                <div class="card-action">
-                    <button class="btn waves-effect waves-light" (click)="onClick()"
-                            name="action">
-                        {{display}}
-                        <i *ngIf="display=='Désactiver'" class="material-icons right logo">highlight_off</i>
-                        <i *ngIf="display=='Activer'" class="material-icons right logo">check_circle_outline</i>
-                    </button>
-                </div>
-            </form>
+                    <div class="card-action">
+                        <button class="btn waves-effect waves-light" (click)="onClick()"
+                                name="action">
+                            {{display}}
+                            <i *ngIf="display=='Désactiver'" class="material-icons right logo">highlight_off</i>
+                            <i *ngIf="display=='Activer'" class="material-icons right logo">check_circle_outline</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

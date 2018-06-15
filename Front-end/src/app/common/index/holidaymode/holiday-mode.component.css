@@ -7,9 +7,28 @@ label {
 }
 
 h1 {
-    font-size: 300%;
+    font-size: 33px;
 }
 
 #title {
     text-align: center;
+}
+
+.card-content {
+    padding: 0 10px;
+    text-align: center;
+}
+
+.input-field {
+    padding-left: 35px;
+    padding-right: 35px;
+    text-align: center;
+}
+
+.input-field label {
+    font-size: 12px;
+}
+
+.actualTemp {
+    font-size: 12px;
 }
