@@ -9,7 +9,7 @@ module.exports = function (app, callback) {
       "date": "A",
       "time": "A",
       "areaId": 2,
-      "connectedObjectId": 0,
+      "connectedObjectId": 1,
       "emergencyId": 1,
       "authorId": 1
     },
@@ -20,7 +20,7 @@ module.exports = function (app, callback) {
       "date": "A",
       "time": "A",
       "areaId": 2,
-      "connectedObjectId": 0,
+      "connectedObjectId": 2,
       "emergencyId": 1,
       "authorId": 1
     }

@@ -1,4 +1,3 @@
-
 <mat-dialog-actions>
     <i class="material-icons right" (click)="close()" style="cursor: pointer">clear</i>
 </mat-dialog-actions>
@@ -17,14 +16,6 @@
         <p>Pièce : {{data.area.name}}</p>
         <p class="date-label">Date : {{data.date}}</p>
         <p class="date-label">Heure : {{data.time}}</p>
-
-
-        <div>Rapport d'action(s) effectuée(s) :
-             <div *ngIf="data.actionsToDo.length == 0">Aucune action à effectuer</div>
-            <div *ngFor="let action of (data.actionsToDo)">
-                {{action.actionDescription}}
-            </div>
-        </div>
 
     </div>
 

@@ -59,7 +59,7 @@ export function mqttServiceFactory() {
 @NgModule({
     declarations: [
         AppComponent,
-        VisuIotComponent
+        VisuIotComponent,
     ],
     imports: [
         BrowserModule,

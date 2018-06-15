@@ -13,7 +13,7 @@ import {IssueIotComponent} from './issue-iot.component';
     imports: [CommonModule, MatDialogModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, MaterializeModule, MatButtonModule],
     exports: [IssueIotComponent],
     providers: [],
-    entryComponents: []
+    entryComponents: [DialogOverviewIotComponent]
 })
 export class IssueIotModule {
 }

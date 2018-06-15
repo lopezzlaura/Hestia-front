@@ -10,7 +10,7 @@ import {GuestGuard} from "../../../guards/guest-guard";
 import {InhabitantService} from "../../../../shared/services/inhabitant.service";
 
 @Component({
-    selector: 'app-dialog-overview-iot',
+    selector: 'dialog-overview-example',
     templateUrl: './dialog-overview-iot.component.html',
     styleUrls: ['./dialog-overview-iot.component.css']
 })
