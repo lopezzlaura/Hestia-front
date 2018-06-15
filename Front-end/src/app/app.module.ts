@@ -44,7 +44,7 @@ import {AreaService} from "../shared/services/area.service";
 import {ConnectedObjectRequestService} from "../shared/services/connected_object_request.service";
 import {MqttModule, MqttService} from "angular2-mqtt/index";
 import {VisuIotComponent} from './declaration/visu-iot/visu-iot.component';
-import {IssueIotModule} from "./declaration/issue/issue-iot/issue-iot.module";
+import {IssueIotModule} from "./declaration/visu-iot/issue-iot/issue-iot.module";
 
 export const MQTT_SERVICE_OPTIONS = {
     hostname: 'localhost',

@@ -8,9 +8,10 @@ module.exports = function (app, callback) {
       "actionType": "Eteindre",
       "date": "A",
       "time": "A",
-      "areaId": 0,
+      "areaId": 2,
       "connectedObjectId": 0,
-      "emergencyId": 1
+      "emergencyId": 1,
+      "authorId": 1
     },
     {
       "title": "Allumer la lumière",
@@ -18,9 +19,10 @@ module.exports = function (app, callback) {
       "actionType": "Allumer",
       "date": "A",
       "time": "A",
-      "areaId": 0,
+      "areaId": 2,
       "connectedObjectId": 0,
-      "emergencyId": 1
+      "emergencyId": 1,
+      "authorId": 1
     }
   ];
 
@@ -37,6 +39,7 @@ module.exports = function (app, callback) {
           date: request.date,
           time: request.time,
           areaId: request.areaId,
+          authorId: request.authorId,
           connectedObjectId: request.connectedObjectId,
           emergencyId: request.emergencyId
         },
@@ -47,11 +50,12 @@ module.exports = function (app, callback) {
         res();
       });
     }));
-  });!
-  Promise.all(promises)
-    .then(() => {
-      callback();
-    }).catch(err => {
-    callback(err);
   });
+  !
+    Promise.all(promises)
+      .then(() => {
+        callback();
+      }).catch(err => {
+      callback(err);
+    });
 };

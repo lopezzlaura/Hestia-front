@@ -26,6 +26,10 @@
     "time": {
       "type": "string",
       "required": true
+    },
+    "authorId": {
+      "type": "number",
+      "required": true
     }
   },
   "validations": [],

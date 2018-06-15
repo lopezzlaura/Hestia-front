@@ -29,7 +29,8 @@ export class IssueIotComponent implements OnInit {
                 area: this.issueIot.area.name,
                 type: this.issueIot.actionType,
                 date: this.issueIot.date,
-                time: this.issueIot.time,
+                author: this.issueIot.author,
+                //time: this.issueIot.time,
                 connectedObject: this.issueIot.connectedObject.name
             }
         });

@@ -9,6 +9,7 @@ import {forkJoin} from "rxjs/observable/forkJoin";
 import {EmergencyModel} from "./EmergencyModel";
 import {InhabitantService} from "../services/inhabitant.service";
 import {EmergencyService} from "../services/emergency.service";
+import {InhabitantModel} from "./InhabitantModel";
 
 export class ConnectedObjectRequestModel {
 
@@ -20,6 +21,7 @@ export class ConnectedObjectRequestModel {
     public date: string;
     public time: string;
     public areaId: number;
+    public author: InhabitantModel;
     public emergency: EmergencyModel;
     public area: AreaModel;
     public connectedObjectId: number;
@@ -31,8 +33,9 @@ export class ConnectedObjectRequestModel {
         const emergencyRequest = emergencyService.getEmergency(emergencyId);
         const connectedObjectRequest = connectedObjectService.getConnectedObject(connectedObjectId);
         const areaRequest = areaService.getArea(areaId);
+        const authorRequest = inhabitantService.getMember(authorId);
 
-        forkJoin(emergencyRequest, connectedObjectRequest, areaRequest).subscribe(([emergencyValue, connectedObjectValue, areaValue]) => {
+        forkJoin(emergencyRequest, connectedObjectRequest, areaRequest, authorRequest).subscribe(([emergencyValue, connectedObjectValue, areaValue, authorValue]) => {
             this.id = id;
             this.title = title;
             this.connectedObjectId = connectedObjectId;
@@ -42,6 +45,7 @@ export class ConnectedObjectRequestModel {
             this.description = description;
             this.emergencyId = emergencyId;
             this.date = date;
+            this.author = authorValue;
             this.emergency = emergencyValue;
             this.connectedObject = connectedObjectValue;
             this.area = areaValue;

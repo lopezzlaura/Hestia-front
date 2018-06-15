@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {IssueService} from "../../../../shared/services/issue.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {DialogOverviewComponent} from "../dialog-overview-issues/dialog-overview.component";
 import {TypeService} from "../../../../shared/services/type.service";
 import {HistoryService} from "../../../../shared/services/history.service";
 import {AssignmentService} from "../../../../shared/services/assignment.service";
@@ -18,7 +17,7 @@ import {InhabitantService} from "../../../../shared/services/inhabitant.service"
 export class DialogOverviewIotComponent implements OnInit {
 
     constructor(
-        public dialogRef: MatDialogRef<DialogOverviewComponent>,
+        public dialogRef: MatDialogRef<DialogOverviewIotComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any, private typeService: TypeService, private emergencyService: EmergencyService, private formBuilder: FormBuilder, private inhabitantService: InhabitantService,
         private issueService: IssueService, private historyService: HistoryService, private assignmentService: AssignmentService, private guestGuard: GuestGuard) {
     }
