@@ -28,7 +28,7 @@ export class ConnectedObjectRequestModel {
     public connectedObject: ConnectedObjectModel;
     public authorId: number;
 
-    constructor(title: string, description: string, emergencyId: number, actionType: string, connectedObjectId: number, areaId: number, zoneId: string, date: string, time: string, authorId: number, inhabitantService: InhabitantService, connectedObjectService: ConnectedObjectService,
+    constructor(title: string, description: string, emergencyId: number, actionType: string, connectedObjectId: number, areaId: number, date: string, time: string, authorId: number, inhabitantService: InhabitantService, connectedObjectService: ConnectedObjectService,
                 emergencyService: EmergencyService, areaService: AreaService, id?: number) {
         const emergencyRequest = emergencyService.getEmergency(emergencyId);
         const connectedObjectRequest = connectedObjectService.getConnectedObject(connectedObjectId);

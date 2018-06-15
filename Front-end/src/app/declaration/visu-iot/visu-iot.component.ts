@@ -17,7 +17,6 @@ export class VisuIotComponent implements OnInit {
 
     constructor(private issueService: ConnectedObjectRequestService, private managerGuard: ManagerGuard,
                 private inhabitantService: InhabitantService) {
-
     }
 
     ngOnInit() {
