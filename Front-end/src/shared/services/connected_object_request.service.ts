@@ -35,15 +35,6 @@ export class ConnectedObjectRequestService {
         return this.http.get<ConnectedObjectRequestModel>(API_URL + 'ConnectedObjectRequests/' + id);
     }
 
-
-    public connectToMQTTBroker() {
-        console.log('trying to connect');
-        this._mqttService.connect({
-            hostname: "localhost",
-            port: 8080
-        });
-    }
-
     public postConnectedObjectIssue(formData: FormData) {
 
         let issue = {
@@ -73,12 +64,6 @@ export class ConnectedObjectRequestService {
                     object: objectValue.name,
                     value: bool
                 };
-                this.connectToMQTTBroker();
-
-                this._mqttService.unsafePublish("/home/" + request.zone + "/Outout/bool/" + request.object, request.value, {
-                    qos: 1,
-                    retain: true
-                });
                 // this.http.post(NODE_RED_API_URL + "ConnectedObject", request).subscribe(post => console.log(post));
             });
         })
